@@ -1,0 +1,23 @@
+<h1>Libri da acquistare</h1>
+<div class="filter">
+    <input type="text" placeholder="Filtra per nome" [(ngModel)]="searchString" />
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Titolo</th>
+            <th>Autore</th>
+            <th>Prezzo</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let book of books | book: searchString">
+            <td>{{book.book.author}}</td>
+            <td>{{book.book.title}}</td>
+            <td>{{book.book.price | currency:'EUR':'symbol'}}</td>
+            <td>A</td>
+        </tr>
+    </tbody>
+</table>

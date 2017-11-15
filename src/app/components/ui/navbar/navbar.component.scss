@@ -1,0 +1,38 @@
+// TODO: move variables on separate file
+// TODO: move gutter on variable
+
+$nav-bar-height: 50px;
+$sidebar-width: 250px;
+
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $nav-bar-height;
+
+    .logo {
+        background-color: #007ACC;
+        color: white;
+        text-align: center;
+        line-height: $nav-bar-height;
+        flex: 0 0 $sidebar-width;
+
+        font-size: 1.25em;
+    }
+
+    .user-data {
+        flex: 1;
+        text-align: right;
+        border-bottom: 1px solid #f0f0f0;
+        background-color: white;
+        line-height: $nav-bar-height;
+        padding: 0 15px;
+
+        font-size: 0.9em;
+
+        .mail {
+            font-weight: 400;
+        }
+    }
+}
