@@ -1,0 +1,11 @@
+{
+    "apps": [{
+        "name": "Scambialibri - Frontend",
+        "script": "server.js",
+        "exec_interpreter": "~/.nvm/v8.9.1/bin/node",
+        "env": {
+            "NODE_ENV": "production"
+        },
+        "args": "--port 21000"
+    }]
+}

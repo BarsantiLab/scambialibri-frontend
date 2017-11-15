@@ -1,6 +1,7 @@
 export const environment = {
     production: true,
     api: {
-        url: 'http://localhost:1337'
+        url: 'https://sca-api.iamdavi.de',
+        v: 'v1'
     }
 };
