@@ -2,7 +2,7 @@
     "apps": [{
         "name": "Scambialibri - Frontend",
         "script": "server.js",
-        "exec_interpreter": "~/.nvm/v8.9.1/bin/node",
+        "exec_interpreter": "node@8.9.1",
         "env": {
             "NODE_ENV": "production"
         },
