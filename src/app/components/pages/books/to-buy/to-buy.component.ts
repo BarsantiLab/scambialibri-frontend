@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { IBook } from '../../../../models/book.model';
-import { BookService } from '../../../../services/api/book.service';
+import { IBookUnit } from 'app/models/book-unit.model';
+import { BookService } from 'app/services/api/book.service';
 
 @Component({
     selector: 'app-to-buy',
@@ -10,8 +10,7 @@ import { BookService } from '../../../../services/api/book.service';
 })
 export class ToBuyComponent implements OnInit {
 
-    public books: IBook[];
-    public searchString: string;
+    public books: IBookUnit[];
 
     constructor(
         private _book: BookService
@@ -19,6 +18,5 @@ export class ToBuyComponent implements OnInit {
 
     async ngOnInit() {
         this.books = await this._book.getFutureBooks();
-        console.log(this.books);
     }
 }

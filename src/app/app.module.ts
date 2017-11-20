@@ -24,7 +24,8 @@ import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 import { ToBuyComponent } from './components/pages/books/to-buy/to-buy.component';
 import { ToSellComponent } from './components/pages/books/to-sell/to-sell.component';
 
-import { BookPipe } from './components/pages/books/to-buy/book.pipe';
+import { BookPipe } from './pipes/book.pipe';
+import { BookTableComponent } from './components/ui/book-table/book-table.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,9 @@ import { BookPipe } from './components/pages/books/to-buy/book.pipe';
         ToBuyComponent,
         ToSellComponent,
 
-        BookPipe
+        BookPipe,
+
+        BookTableComponent
     ],
 
     imports: [

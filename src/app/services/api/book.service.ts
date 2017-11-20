@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 
 import { IBook } from '../../models/book.model';
+import { IBookUnit } from '../../models/book-unit.model';
 
 import { ConfigService } from '../../services/config.service';
 import { HttpService } from '../../services/http.service';
 
 @Injectable()
 export class BookService {
-    currentBooks: IBook[];
-    futureBooks: IBook[];
+    currentBooks: IBookUnit[];
+    futureBooks: IBookUnit[];
 
     constructor(
         private _config: ConfigService,
@@ -19,7 +20,7 @@ export class BookService {
         const url = `${this._config.API.url}/${this._config.API.v}/book/future`;
         const response = await this._http.get(url);
 
-        this.futureBooks = await response.json() as IBook[];
+        this.futureBooks = await response.json() as IBookUnit[];
         return this.futureBooks;
     }
 
@@ -27,7 +28,7 @@ export class BookService {
         const url = `${this._config.API.url}/${this._config.API.v}/book/current`;
         const response = await this._http.get(url);
 
-        this.currentBooks = await response.json() as IBook[];
+        this.currentBooks = await response.json() as IBookUnit[];
         return this.currentBooks;
     }
 }

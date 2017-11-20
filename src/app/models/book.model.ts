@@ -6,8 +6,5 @@ export interface IBook {
         subtitle: string;
         price: number;
         author: string;
-    },
-
-    toSell?: boolean,
-    toBuy?: boolean
+    }
 }

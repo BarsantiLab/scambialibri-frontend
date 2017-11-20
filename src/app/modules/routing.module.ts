@@ -22,7 +22,7 @@ const routes: Routes = [{
     canActivate: [GuardService],
     children: [{
         path: '',
-        redirectTo: '/books/to-buy',
+        redirectTo: '/books/to-sell',
         pathMatch: 'full'
     }, {
         path: 'to-buy',

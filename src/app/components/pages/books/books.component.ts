@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UiService } from '../../../services/ui.service';
+import { UiService } from 'app/services/ui.service';
 
-import { AlertType } from '../../../models/alert.model';
+import { AlertType } from 'app/models/alert.model';
 
 @Component({
     selector: 'app-books',
