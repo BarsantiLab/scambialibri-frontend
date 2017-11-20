@@ -1,7 +1,7 @@
-import { Observable } from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
 import { Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class HttpService {

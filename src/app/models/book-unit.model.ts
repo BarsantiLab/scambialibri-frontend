@@ -1,13 +1,13 @@
 import { IBook } from './book.model';
 
 export interface IBookUnit {
-    book: IBook,
+    book: IBook;
 
-    toSell?: boolean,
-    toBuy?: boolean,
+    toSell?: boolean;
+    toBuy?: boolean;
 
-    status?: BookStatus,
-    additionalMaterial?: boolean
+    status?: BookStatus;
+    additionalMaterial?: boolean;
 }
 
 export enum BookStatus {

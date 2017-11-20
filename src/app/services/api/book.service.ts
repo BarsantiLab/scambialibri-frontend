@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { IBook } from '../../models/book.model';
 import { IBookUnit } from '../../models/book-unit.model';
+import { IBook } from '../../models/book.model';
 
 import { ConfigService } from '../../services/config.service';
 import { HttpService } from '../../services/http.service';

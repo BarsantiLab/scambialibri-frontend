@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 
-import { HttpService } from './http.service';
 import { ConfigService } from './config.service';
+import { HttpService } from './http.service';
 
 import { IUser } from '../models/user.model';
 

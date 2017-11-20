@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { GuardService } from '../services/guard.service';
 
-import { LoginComponent } from '../components/pages/login/login.component';
 import { BooksComponent } from '../components/pages/books/books.component';
+import { LoginComponent } from '../components/pages/login/login.component';
 
 import { ToBuyComponent } from '../components/pages/books/to-buy/to-buy.component';
 import { ToSellComponent } from '../components/pages/books/to-sell/to-sell.component';

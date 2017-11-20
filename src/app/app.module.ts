@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
@@ -12,20 +12,20 @@ import { RoutingModule } from './modules/routing.module';
 
 import { AuthService } from './services/auth.service';
 import { ConfigService } from './services/config.service';
-import { HttpService } from './services/http.service';
 import { GuardService } from './services/guard.service';
+import { HttpService } from './services/http.service';
 import { UiService } from './services/ui.service';
 
 import { BookService } from './services/api/book.service';
 
-import { AlertComponent } from './components/ui/alert/alert.component';
-import { NavbarComponent } from './components/ui/navbar/navbar.component';
-import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 import { ToBuyComponent } from './components/pages/books/to-buy/to-buy.component';
 import { ToSellComponent } from './components/pages/books/to-sell/to-sell.component';
+import { AlertComponent } from './components/ui/alert/alert.component';
+import { BookTableComponent } from './components/ui/book-table/book-table.component';
+import { NavbarComponent } from './components/ui/navbar/navbar.component';
+import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 
 import { BookPipe } from './pipes/book.pipe';
-import { BookTableComponent } from './components/ui/book-table/book-table.component';
 
 @NgModule({
     declarations: [

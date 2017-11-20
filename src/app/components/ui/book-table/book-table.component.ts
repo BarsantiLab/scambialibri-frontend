@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { IBook } from 'app/models/book.model';
 import { IBookUnit } from 'app/models/book-unit.model';
+import { IBook } from 'app/models/book.model';
 
 @Component({
     selector: 'book-table',

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { IAlert, AlertType } from '../models/alert.model';
+import { AlertType, IAlert } from '../models/alert.model';
 
 @Injectable()
 export class UiService {
