@@ -1,22 +1,7 @@
-// TODO: move to variables
+@import "~styles/variables.scss";
 
 .filter {
     width: 100%;
-
-    input {
-        width: 100%;
-        padding: 15px;
-        border: 1px solid #ddd;
-        font-size: 14px;
-
-        &::placeholder {
-            color: rgba(0, 0, 0, .25);
-        }
-
-        &:focus {
-            outline: none;
-        }
-    }
 }
 
 table {
@@ -38,6 +23,6 @@ table {
     }
 
     tr:nth-child(odd) td {
-        background-color: lighten(#0074CF, 58%);
+        background-color: lighten($accent, 58%);
     }
 }

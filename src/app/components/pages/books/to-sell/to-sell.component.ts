@@ -20,8 +20,8 @@ export class ToSellComponent implements OnInit {
         this.books = await this._book.getCurrentBooks();
     }
 
-    handleButtonClick(book: IBookUnit) {
-        console.log(book);
+    async handleButtonClick(book: IBookUnit) {
         book.toSell = !book.toSell;
+        await this._book.setBookStatus(book);
     }
 }

@@ -23,8 +23,10 @@ import { ToSellComponent } from './components/pages/books/to-sell/to-sell.compon
 import { AlertComponent } from './components/ui/alert/alert.component';
 import { BookTableComponent } from './components/ui/book-table/book-table.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
+import { NewBookComponent } from './components/ui/new-book/new-book.component';
 import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 
+import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
 
 @NgModule({
@@ -38,9 +40,12 @@ import { BookPipe } from './pipes/book.pipe';
         ToBuyComponent,
         ToSellComponent,
 
+        BookStatusPipe,
         BookPipe,
 
-        BookTableComponent
+        BookTableComponent,
+
+        NewBookComponent
     ],
 
     imports: [

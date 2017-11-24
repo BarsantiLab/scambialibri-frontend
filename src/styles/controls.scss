@@ -1,0 +1,16 @@
+@import "~styles/variables.scss";
+
+input {
+    width: 100%;
+    padding: $gutter;
+    border: 1px solid #ddd;
+    font-size: 14px;
+
+    &::placeholder {
+        color: rgba(0, 0, 0, .25);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}

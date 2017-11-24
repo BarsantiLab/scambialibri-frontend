@@ -1,11 +1,6 @@
-:host {
-    padding: 15px; // TODO: move to gutter
-    display: block;
-}
+@import "~styles/variables.scss";
 
-h1 {
-    // TODO: generalize
-    margin: 0;
-    margin-bottom: 15px;
-    font-weight: 400;
+:host {
+    padding: $gutter;
+    display: block;
 }

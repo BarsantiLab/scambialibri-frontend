@@ -25,8 +25,7 @@
                     <option value="penNotes">Note a penna</option>
                     <option value="badConditions">Cattive condizioni</option>
                 </select>
-                <!-- TODO: translate status (pipe?) -->
-                <span *ngIf="lockStatus">{{ book.status }}</span>
+                <span *ngIf="lockStatus">{{ book.status | bookStatus }}</span>
             </td>
             <td>
                 <input *ngIf="!lockStatus" type="checkbox" [(ngModel)]="book.additionalMaterial" [disabled]="book.toSell">
@@ -34,10 +33,10 @@
             </td>
             <td><button [disabled]="!book.status" (click)="buttonClicked(book)">{{ book.toSell ? altButtonLabel : buttonLabel}}</button></td>
         </tr>
-        <!-- <tr *ngIf="(books | book: searchString).length === 0">
-            <td colspan="4" class="no-books">
+        <tr *ngIf="!books || (books | book: searchString).length === 0">
+            <td colspan="7" class="no-books">
                 <b>Nessun libro disponibile!</b>
             </td>
-        </tr> -->
+        </tr>
     </tbody>
 </table>

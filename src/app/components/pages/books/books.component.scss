@@ -1,8 +1,6 @@
-// TODO: move variables on separate file
-
-$nav-bar-height: 50px;
+@import "~styles/variables.scss";
 
 .books {
-    margin-left: 250px;
+    margin-left: $sidebar-width;
     margin-top: $nav-bar-height;
 }

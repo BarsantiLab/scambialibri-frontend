@@ -1,0 +1,9 @@
+@import "~styles/variables.scss";
+
+h1 {
+    margin: 0;
+    margin-bottom: $gutter;
+    font-weight: 400;
+}
+
+@import "~styles/controls.scss";

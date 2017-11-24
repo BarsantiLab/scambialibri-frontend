@@ -6,3 +6,10 @@ export interface IBook {
     price: number;
     author: string;
 }
+
+export enum BookStatus {
+    new = 'Nuovo',
+    pencilNotes = 'Note a matita',
+    penNotes = 'Note a penna',
+    badConditions = 'Cattive condizioni'
+}

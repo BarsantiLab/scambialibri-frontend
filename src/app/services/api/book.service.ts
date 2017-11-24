@@ -31,4 +31,14 @@ export class BookService {
         this.currentBooks = await response.json() as IBookUnit[];
         return this.currentBooks;
     }
+
+    async setBookStatus(book: IBookUnit) {
+        const url = `${this._config.API.url}/${this._config.API.v}/book/${book.book.id}/status`;
+        const response = await this._http.post(url, {
+            toSell: book.toSell,
+            toBuy: book.toBuy,
+            status: book.status,
+            additionalMaterial: book.additionalMaterial
+        });
+    }
 }

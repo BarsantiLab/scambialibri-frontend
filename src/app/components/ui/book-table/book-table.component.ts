@@ -18,8 +18,6 @@ export class BookTableComponent implements OnInit {
 
     public searchString = '';
 
-    // TODO: fix bugged empty list row
-
     constructor() { }
 
     ngOnInit() { }
