@@ -1,10 +1,17 @@
 $gutter: 15px;
 $accent: #0074CF;
 
+// Navbar
 $nav-bar-height: 50px;
 
+// Sidebar
 $sidebar-width: 250px;
 $sidebar-bg: #2A2D33;
 $sidebar-color: #757779;
 $sidebar-selected: #656C7E;
 $sidebar-border: 1px solid darken($sidebar-color, 15%);
+
+// Alerts
+$error-color: #A80303;
+$warning-color: #C29F05;
+$success-color: #009E00;

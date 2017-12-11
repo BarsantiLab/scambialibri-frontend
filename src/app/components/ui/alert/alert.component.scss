@@ -1,36 +1,33 @@
-$error-color: #A80303;
-$warning-color: #C29F05;
-$success-color: #009E00;
+@import "~styles/variables.scss";
 
 .alerts {
     position: fixed;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: $gutter * 2;
+    right: $gutter * 2;
 
     .alert {
-        background-color: rgba(#333, 0.6);
-        border: 1px solid #333;
+        background-color: rgba(#0077FF, 0.75);
+        border: 1px solid #0077FF;
         font-size: 14px;
 
         color: white;
         padding: 15px;
         margin-top: 15px;
         cursor: pointer;
-        min-width: 100px;
+        min-width: 200px;
 
         &.alert-error {
-            background-color: rgba($error-color, 0.6);
+            background-color: rgba($error-color, 0.75);
             border-color: $error-color;
         }
 
         &.alert-warning {
-            background-color: rgba($warning-color, 0.6);
+            background-color: rgba($warning-color, 0.75);
             border-color: $warning-color;
         }
 
         &.alert-success {
-            background-color: rgba($success-color, 0.6);
+            background-color: rgba($success-color, 0.75);
             border-color: $success-color;
         }
     }

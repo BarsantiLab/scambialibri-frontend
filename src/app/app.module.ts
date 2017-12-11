@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,7 @@ import { HttpService } from './services/http.service';
 import { UiService } from './services/ui.service';
 
 import { BookService } from './services/api/book.service';
+import { UserService } from './services/api/user.service';
 
 import { ToBuyComponent } from './components/pages/books/to-buy/to-buy.component';
 import { ToSellComponent } from './components/pages/books/to-sell/to-sell.component';
@@ -50,6 +52,7 @@ import { BookPipe } from './pipes/book.pipe';
 
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         RoutingModule,
         HttpModule,
 
@@ -64,7 +67,8 @@ import { BookPipe } from './pipes/book.pipe';
         GuardService,
         UiService,
 
-        BookService
+        BookService,
+        UserService
     ],
 
     bootstrap: [AppComponent]

@@ -35,6 +35,13 @@ export class AuthService {
         this.loadStateFromLocalStorage();
     }
 
+    logout() {
+        this.clearLocalStorage();
+        this.user = null;
+        this.token = null;
+        this.authenticated = false;
+    }
+
     private clearLocalStorage() {
         localStorage.clear();
     }

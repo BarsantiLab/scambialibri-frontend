@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UiService } from '../../../services/ui.service';
+import { UiService } from 'app/services/ui.service';
 
-import { AlertType, IAlert } from '../../../models/alert.model';
+import { AlertType, IAlert } from 'app/models/alert.model';
+
+import { AlertAnimation } from 'app/animations/alert.animation';
 
 @Component({
     selector: 'alert',
     templateUrl: './alert.component.html',
-    styleUrls: ['./alert.component.scss']
+    styleUrls: ['./alert.component.scss'],
+    animations: [AlertAnimation]
 })
 export class AlertComponent implements OnInit {
     alerts: IAlert[] = [];

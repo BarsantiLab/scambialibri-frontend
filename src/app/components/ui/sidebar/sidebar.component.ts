@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UiService } from 'app/services/ui.service';
+
+import { AlertType } from 'app/models/alert.model';
+
 @Component({
     selector: 'sidebar',
     templateUrl: './sidebar.component.html',
@@ -7,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        private _ui: UiService
+    ) { }
 
     ngOnInit() { }
-
 }

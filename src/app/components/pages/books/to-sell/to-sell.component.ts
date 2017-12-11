@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { IBookUnit } from 'app/models/book-unit.model';
-import { BookService } from 'app/services/api/book.service';
+import { BookListType, BookService } from 'app/services/api/book.service';
 
 @Component({
     selector: 'app-to-sell',
@@ -17,11 +17,11 @@ export class ToSellComponent implements OnInit {
     ) { }
 
     async ngOnInit() {
-        this.books = await this._book.getCurrentBooks();
+        this.books = await this._book.getBooks(BookListType.current);
     }
 
     async handleButtonClick(book: IBookUnit) {
         book.toSell = !book.toSell;
-        await this._book.setBookStatus(book);
+        await this._book.setBookStatus(book, BookListType.current);
     }
 }

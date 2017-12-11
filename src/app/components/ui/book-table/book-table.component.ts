@@ -14,6 +14,7 @@ export class BookTableComponent implements OnInit {
     @Input() buttonLabel = '';
     @Input() altButtonLabel = '';
     @Input() lockStatus = false;
+    @Input() showStatus = true;
     @Output() onButtonClick = new EventEmitter();
 
     public searchString = '';

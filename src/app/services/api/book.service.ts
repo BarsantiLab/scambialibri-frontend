@@ -1,39 +1,31 @@
 import { Injectable } from '@angular/core';
 
-import { IBookUnit } from '../../models/book-unit.model';
-import { IBook } from '../../models/book.model';
+import { IBookUnit } from 'app/models/book-unit.model';
+import { IBook } from 'app/models/book.model';
 
-import { ConfigService } from '../../services/config.service';
-import { HttpService } from '../../services/http.service';
+import { ConfigService } from 'app/services/config.service';
+import { HttpService } from 'app/services/http.service';
+
+export enum BookListType {
+    current = 'current',
+    future = 'future'
+}
 
 @Injectable()
 export class BookService {
-    currentBooks: IBookUnit[];
-    futureBooks: IBookUnit[];
-
     constructor(
         private _config: ConfigService,
         private _http: HttpService
     ) { }
 
-    async getFutureBooks() {
-        const url = `${this._config.API.url}/${this._config.API.v}/book/future`;
+    async getBooks(listType: BookListType) {
+        const url = `${this._config.API.url}/${this._config.API.v}/book/${listType}`;
         const response = await this._http.get(url);
-
-        this.futureBooks = await response.json() as IBookUnit[];
-        return this.futureBooks;
+        return await response.json() as IBookUnit[];
     }
 
-    async getCurrentBooks() {
-        const url = `${this._config.API.url}/${this._config.API.v}/book/current`;
-        const response = await this._http.get(url);
-
-        this.currentBooks = await response.json() as IBookUnit[];
-        return this.currentBooks;
-    }
-
-    async setBookStatus(book: IBookUnit) {
-        const url = `${this._config.API.url}/${this._config.API.v}/book/${book.book.id}/status`;
+    async setBookStatus(book: IBookUnit, listType: BookListType) {
+        const url = `${this._config.API.url}/${this._config.API.v}/book/${listType}/${book.book.id}/status`;
         const response = await this._http.post(url, {
             toSell: book.toSell,
             toBuy: book.toBuy,

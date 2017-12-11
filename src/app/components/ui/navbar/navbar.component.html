@@ -3,6 +3,9 @@
         ScambiaLibri
     </div>
     <div class="user-data">
-        <span class="mail">{{_auth.user.mail}}</span>
+        <span class="mail">{{user.firstName}} {{user.lastName}}</span>
+        <span class="mail">({{user.mail}})</span>
+        <!-- TODO: replace with icon button -->
+        <button (click)="logout()">Logout</button>
     </div>
 </div>

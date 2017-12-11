@@ -7,8 +7,8 @@
             <th>Titolo</th>
             <th>Autore</th>
             <th>Prezzo</th>
-            <th>Stato</th>
-            <th>Mat. agg.</th>
+            <th *ngIf="showStatus">Stato</th>
+            <th *ngIf="showStatus">Mat. agg.</th>
             <th>Azioni</th>
         </tr>
     </thead>
@@ -18,7 +18,7 @@
             <td>{{book.book.author}}</td>
             <td>{{book.book.title}}</td>
             <td>{{book.book.price | currency:'EUR':'symbol'}}</td>
-            <td>
+            <td *ngIf="showStatus">
                 <select *ngIf="!lockStatus" [(ngModel)]="book.status" [disabled]="book.toSell">
                     <option value="new">Nuovo</option>
                     <option value="pencilNotes">Note a matita</option>
@@ -27,11 +27,11 @@
                 </select>
                 <span *ngIf="lockStatus">{{ book.status | bookStatus }}</span>
             </td>
-            <td>
+            <td *ngIf="showStatus">
                 <input *ngIf="!lockStatus" type="checkbox" [(ngModel)]="book.additionalMaterial" [disabled]="book.toSell">
                 <span *ngIf="lockStatus">Sì</span>
             </td>
-            <td><button [disabled]="!book.status" (click)="buttonClicked(book)">{{ book.toSell ? altButtonLabel : buttonLabel}}</button></td>
+            <td><button [disabled]="!book.status" (click)="buttonClicked(book)">{{ (book.toSell || book.toBuy) ? altButtonLabel : buttonLabel}}</button></td>
         </tr>
         <tr *ngIf="!books || (books | book: searchString).length === 0">
             <td colspan="7" class="no-books">

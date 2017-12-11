@@ -1,2 +1,8 @@
 <h1>Libri da acquistare</h1>
-<book-table [books]="books" buttonLabel="Acquista"></book-table>
+<book-table
+    [books]="books"
+    buttonLabel="Acquista"
+    altButtonLabel="Annulla"
+    [showStatus]="false"
+    (onButtonClick)="handleButtonClick($event)"
+></book-table>
