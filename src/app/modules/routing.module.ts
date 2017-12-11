@@ -6,6 +6,7 @@ import { GuardService } from '../services/guard.service';
 import { BooksComponent } from '../components/pages/books/books.component';
 import { LoginComponent } from '../components/pages/login/login.component';
 
+import { ResultsComponent } from '../components/pages/books/results/results.component';
 import { ToBuyComponent } from '../components/pages/books/to-buy/to-buy.component';
 import { ToSellComponent } from '../components/pages/books/to-sell/to-sell.component';
 
@@ -30,6 +31,9 @@ const routes: Routes = [{
     }, {
         path: 'to-sell',
         component: ToSellComponent
+    }, {
+        path: 'results',
+        component: ResultsComponent
     }]
 }];
 

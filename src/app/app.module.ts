@@ -30,6 +30,8 @@ import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
+import { ResultsComponent } from './components/pages/books/results/results.component';
+import { ResultElementComponent } from './components/ui/result-element/result-element.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,11 @@ import { BookPipe } from './pipes/book.pipe';
 
         BookTableComponent,
 
-        NewBookComponent
+        NewBookComponent,
+
+        ResultsComponent,
+
+        ResultElementComponent
     ],
 
     imports: [

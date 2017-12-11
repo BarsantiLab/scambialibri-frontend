@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { IBookUnit } from 'app/models/book-unit.model';
 import { IBook } from 'app/models/book.model';
+import { IResult } from 'app/models/result.model';
 
 import { ConfigService } from 'app/services/config.service';
 import { HttpService } from 'app/services/http.service';
@@ -32,5 +33,11 @@ export class BookService {
             status: book.status,
             additionalMaterial: book.additionalMaterial
         });
+    }
+
+    async getResults() {
+        const url = `${this._config.API.url}/${this._config.API.v}/book/results`;
+        const response = await this._http.get(url);
+        return await response.json() as IResult[];
     }
 }

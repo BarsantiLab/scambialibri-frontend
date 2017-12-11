@@ -1,0 +1,23 @@
+<h2>
+    <span>{{result.book.title}}</span>
+    <span class="right">{{result.book.price | currency:'EUR':'symbol'}}</span>
+</h2>
+<h3>{{result.book.author}}</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Indirizzo</th>
+            <th>Stato</th>
+            <th>Materiale</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of result.users">
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <td>{{user.address}}</td>
+            <td>{{user.status | bookStatus}}</td>
+            <td>{{user.additionalMaterial ? 'Sì' : 'No'}}</td>
+        </tr>
+    </tbody>
+</table>
