@@ -24,7 +24,7 @@ export class AlertComponent implements OnInit {
             if (!alert.permanent) {
                 setTimeout(() => {
                     this.removeAlert(alert);
-                }, 5000);
+                }, 5000); // TODO: restore to 5000
             }
         });
     }

@@ -13,11 +13,14 @@ import { RoutingModule } from './modules/routing.module';
 
 import { AuthService } from './services/auth.service';
 import { ConfigService } from './services/config.service';
-import { GuardService } from './services/guard.service';
 import { HttpService } from './services/http.service';
 import { UiService } from './services/ui.service';
 
+import { CanActivateOnboarding } from './services/can-activate/onboarding.service';
+import { CanActivateUser } from './services/can-activate/user.service';
+
 import { BookService } from './services/api/book.service';
+import { SchoolService } from './services/api/school.service';
 import { UserService } from './services/api/user.service';
 
 import { ToBuyComponent } from './components/pages/books/to-buy/to-buy.component';
@@ -30,7 +33,10 @@ import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
+
 import { ResultsComponent } from './components/pages/books/results/results.component';
+import { OnboardingComponent } from './components/pages/onboarding/onboarding.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
 import { ResultElementComponent } from './components/ui/result-element/result-element.component';
 
 @NgModule({
@@ -47,13 +53,14 @@ import { ResultElementComponent } from './components/ui/result-element/result-el
         BookStatusPipe,
         BookPipe,
 
-        BookTableComponent,
-
-        NewBookComponent,
-
         ResultsComponent,
 
-        ResultElementComponent
+        BookTableComponent,
+        NewBookComponent,
+        ResultElementComponent,
+
+        SignupComponent,
+        OnboardingComponent
     ],
 
     imports: [
@@ -70,11 +77,14 @@ import { ResultElementComponent } from './components/ui/result-element/result-el
         AuthService,
         ConfigService,
         HttpService,
-        GuardService,
         UiService,
 
+        CanActivateOnboarding,
+        CanActivateUser,
+
         BookService,
-        UserService
+        UserService,
+        SchoolService
     ],
 
     bootstrap: [AppComponent]

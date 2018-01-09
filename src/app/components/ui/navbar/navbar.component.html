@@ -3,9 +3,9 @@
         ScambiaLibri
     </div>
     <div class="user-data">
-        <span class="mail">{{user.firstName}} {{user.lastName}}</span>
-        <span class="mail">({{user.mail}})</span>
+        <span *ngIf="!skipLogin" class="mail">{{user.firstName}} {{user.lastName}}</span>
+        <span *ngIf="!skipLogin" class="mail">({{user.mail}})</span>
         <!-- TODO: replace with icon button -->
-        <button (click)="logout()">Logout</button>
+        <button *ngIf="!skipLogin" (click)="logout()">Logout</button>
     </div>
 </div>

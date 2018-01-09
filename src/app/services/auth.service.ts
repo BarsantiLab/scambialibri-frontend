@@ -35,6 +35,14 @@ export class AuthService {
         this.loadStateFromLocalStorage();
     }
 
+    async signup(mail, password): Promise<any> {
+        const response = await this._http.post(`${this._config.API.url}/v1/user/signup`, {
+            mail, password
+        });
+
+        return response.json();
+    }
+
     logout() {
         this.clearLocalStorage();
         this.user = null;
@@ -48,19 +56,16 @@ export class AuthService {
 
     private saveStateToLocalStorage() {
         localStorage.setItem('token', this.token);
-        localStorage.setItem('id', this.user.id);
-        localStorage.setItem('mail', this.user.mail);
+        // TODO: save in base64
+        localStorage.setItem('user', JSON.stringify(this.user));
     }
 
     private loadStateFromLocalStorage() {
         const token = localStorage.getItem('token');
 
         if (token) {
-            this.user = {
-                id: localStorage.getItem('id'),
-                accessToken: localStorage.getItem('token'),
-                mail: localStorage.getItem('mail')
-            };
+            // TODO: parse in base64
+            this.user = JSON.parse(localStorage.getItem('user')) as IUser;
 
             this.token = localStorage.getItem('token');
             this.authenticated = true;

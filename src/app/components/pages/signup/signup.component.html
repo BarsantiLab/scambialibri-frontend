@@ -1,0 +1,26 @@
+<div class="form-container">
+    <div class="form-wrapper">
+        <h1>Scambialibri</h1>
+        <h2>Registrati ed entra nell'applicazione</h2>
+
+        <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+            <div class="input-container">
+                <input type="email" placeholder="Indirizzo e-mail" [(ngModel)]="mail"  formControlName="mail" />
+                <span class="error" *ngIf="signupForm.get('mail').invalid && signupForm.get('mail').touched">Inserisci il tuo indirizzo e-mail!</span>
+            </div>
+
+            <div class="input-container">
+                <input type="password" placeholder="Password" [(ngModel)]="password"  formControlName="password" />
+                <span class="error" *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">Inserisci la password (minimo 5 caratteri)!</span>
+            </div>
+
+            <div class="input-container">
+                <input type="password" placeholder="Ripeti password" [(ngModel)]="repeatPassword"  formControlName="repeatPassword" />
+                <span class="error" *ngIf="signupForm.get('repeatPassword').invalid && signupForm.get('repeatPassword').touched || password !== repeatPassword">Inserisci la password inserita sopra!</span>
+            </div>
+
+            <button [disabled]="signupForm.touched && !signupForm.valid">Registrati</button>
+            <a routerLink="/login">Hai già un account? Entra ora!</a>
+        </form>
+    </div>
+</div>

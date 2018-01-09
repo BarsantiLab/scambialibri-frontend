@@ -52,7 +52,7 @@ $gutter: 25px;
                 }
             }
 
-            input[type=email], input[type=password] {
+            input[type=text], input[type=email], input[type=password] {
                 width: 100%;
                 background-color: transparent;
                 border: 0;
@@ -66,6 +66,10 @@ $gutter: 25px;
                 &:focus {
                     outline: none;
                     border-color: #007ACC;
+                }
+
+                &::placeholder {
+                    color: rgba(white, .5);
                 }
             }
 

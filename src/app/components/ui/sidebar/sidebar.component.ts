@@ -10,7 +10,6 @@ import { AlertType } from 'app/models/alert.model';
     styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
     constructor(
         private _ui: UiService
     ) { }

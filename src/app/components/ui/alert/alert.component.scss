@@ -14,7 +14,7 @@
         padding: 15px;
         margin-top: 15px;
         cursor: pointer;
-        min-width: 200px;
+        width: 350px;
 
         &.alert-error {
             background-color: rgba($error-color, 0.75);

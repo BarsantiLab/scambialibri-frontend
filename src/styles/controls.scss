@@ -14,3 +14,18 @@ input {
         outline: none;
     }
 }
+
+select {
+    width: 100%;
+    padding: $gutter;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    font-size: 14px;
+    background-color: white;
+    appearance: none;
+
+    &:disabled {
+        background-color: rgba(white, .5);
+        border-color: rgba(#ddd, .5);
+    }
+}

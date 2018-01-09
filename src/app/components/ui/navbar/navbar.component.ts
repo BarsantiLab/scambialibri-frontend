@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from 'app/services/api/user.service';
@@ -13,6 +13,8 @@ import { IUser } from 'app/models/user.model';
 })
 export class NavbarComponent implements OnInit {
 
+    @Input() skipLogin = false;
+
     user: IUser = {} as IUser;
 
     constructor(
@@ -22,7 +24,10 @@ export class NavbarComponent implements OnInit {
     ) { }
 
     async ngOnInit() {
-        this.user = await this._user.getUser(this._auth.user.id, ['currentClass', 'futureClass']);
+        if (!this.skipLogin) {
+            this.user = await this._user.getUser(this._auth.user.id, ['currentClass', 'futureClass']);
+        }
+
         // TODO: add current and future class (to be fixed in backend)
     }
 

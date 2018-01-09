@@ -40,8 +40,14 @@ export class LoginComponent {
             this._ui.alert(AlertType.Success, 'Login effettuato con successo!');
             this._router.navigate(['/books']);
         } catch (err) {
+            // TODO: creare error handler
             if (err.status === 401) {
                 this._ui.alert(AlertType.Error, 'Credenziali di login errate!', true);
+            } else if (err.body.error === 'onboarding_not_completed') {
+                this._ui.alert(AlertType.Warning,
+                    '<b>Non hai completato la procedura di onboarding!</b><br>Verifica la tua casella l\'e-mail di benvenuto!',
+                    true
+                );
             } else {
                 this._ui.alert(AlertType.Error, 'Errore inaspettato!', true);
             }

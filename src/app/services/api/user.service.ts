@@ -21,4 +21,10 @@ export class UserService {
         this.currentUser = await response.json() as IUser;
         return this.currentUser;
     }
+
+    async completeOnboarding(token: string, data: any) {
+        const url = `${this._config.API.url}/${this._config.API.v}/user/onboarding?token=${token}`;
+        const response = await this._http.post(url, data);
+        return await response.json();
+    }
 }

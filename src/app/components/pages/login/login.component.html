@@ -1,22 +1,21 @@
-<div class="login-page">
-    <div class="form-container">
-        <div class="form-wrapper">
-            <h1>Scambialibri</h1>
-            <h2>Entra con le tue credenziali</h2>
+<div class="form-container">
+    <div class="form-wrapper">
+        <h1>Scambialibri</h1>
+        <h2>Entra con le tue credenziali</h2>
 
-            <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-                <div class="input-container">
-                    <input type="email" placeholder="Indirizzo e-mail" [(ngModel)]="mail" formControlName="mail" />
-                    <span class="error" *ngIf="loginForm.get('mail').invalid && loginForm.get('mail').touched">Inserisci il tuo indirizzo e-mail!</span>
-                </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+            <div class="input-container">
+                <input type="email" placeholder="Indirizzo e-mail" [(ngModel)]="mail" formControlName="mail" />
+                <span class="error" *ngIf="loginForm.get('mail').invalid && loginForm.get('mail').touched">Inserisci il tuo indirizzo e-mail!</span>
+            </div>
 
-                <div class="input-container">
-                    <input type="password" placeholder="Password" [(ngModel)]="password" formControlName="password" />
-                    <span class="error" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Inserisci la tua password!</span>
-                </div>
+            <div class="input-container">
+                <input type="password" placeholder="Password" [(ngModel)]="password" formControlName="password" />
+                <span class="error" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">Inserisci la tua password!</span>
+            </div>
 
-                <button [disabled]="loginForm.touched && !loginForm.valid">Login</button>
-            </form>
-        </div>
+            <button [disabled]="loginForm.touched && !loginForm.valid">Login</button>
+            <a routerLink="/signup">Non sei registrato? Iscriviti ora!</a>
+        </form>
     </div>
 </div>
