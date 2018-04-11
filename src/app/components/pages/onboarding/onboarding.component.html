@@ -64,8 +64,8 @@
         <div class="fieldset">
             <div class="input-container">
                 <label>Classe</label>
-                <select [(ngModel)]="class" required name="class" [disabled]="!specialization">
-                    <option *ngFor="let c of classes" [ngValue]="c">{{c.year}}{{c.section}}</option>
+                <select [(ngModel)]="grade" required name="grade" [disabled]="!specialization">
+                    <option *ngFor="let g of grades" [ngValue]="g">{{g.year}}{{g.section}}</option>
                 </select>
             </div>
         </div>

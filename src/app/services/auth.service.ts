@@ -23,7 +23,7 @@ export class AuthService {
     async login(mail, password): Promise<any> {
         this.clearToken();
 
-        const response = await this._http.post(`${this._config.API.url}/v1/user/login`, {
+        const response = await this._http.post(`${this._config.API.url}/user/login`, {
             mail,
             password
         });
@@ -31,12 +31,14 @@ export class AuthService {
         this.user = response.json() as IUser;
         this.token = this.user.accessToken;
 
+        console.log(this.user);
+
         this.saveStateToLocalStorage();
         this.loadStateFromLocalStorage();
     }
 
     async signup(mail, password): Promise<any> {
-        const response = await this._http.post(`${this._config.API.url}/v1/user/signup`, {
+        const response = await this._http.post(`${this._config.API.url}/user/signup`, {
             mail, password
         });
 

@@ -1,3 +1,5 @@
+import { ITransaction } from 'app/models/transaction.model';
+
 export interface IBook {
     id: number;
     isbn: string;
@@ -5,6 +7,8 @@ export interface IBook {
     subtitle: string;
     price: number;
     author: string;
+
+    transaction?: ITransaction;
 }
 
 export enum BookStatus {

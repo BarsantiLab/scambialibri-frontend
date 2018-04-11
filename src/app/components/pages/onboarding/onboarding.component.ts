@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { AlertType } from 'app/models/alert.model';
-import { IClass } from 'app/models/class.model';
+import { IGrade } from 'app/models/grade.model';
 import { ISchool } from 'app/models/school.model';
 import { ISpecialization } from 'app/models/specialization.model';
 
@@ -35,11 +35,11 @@ export class OnboardingComponent implements OnInit {
 
     school: ISchool;
     specialization: ISpecialization;
-    class: IClass;
+    grade: IGrade;
 
     schools: ISchool[];
     specializations: ISpecialization[];
-    classes: IClass[];
+    grades: IGrade[];
 
     constructor(
         private _route: ActivatedRoute,
@@ -62,16 +62,16 @@ export class OnboardingComponent implements OnInit {
         if (!this.school) return;
 
         this.specialization = null;
-        this.class = null;
-        this.classes = [];
+        this.grade = null;
+        this.grades = [];
         this.specializations = await this._schoolService.getSpecializations(this.school);
     }
 
     async onSelectSpecialization() {
         if (!this.specialization) return;
 
-        this.class = null;
-        this.classes = await this._schoolService.getClasses(this.school, this.specialization);
+        this.grade = null;
+        this.grades = await this._schoolService.getGrades(this.school, this.specialization);
     }
 
     async submitOnboarding() {
@@ -84,14 +84,13 @@ export class OnboardingComponent implements OnInit {
 
         this.onboardingModel.school = this.school.id;
         this.onboardingModel.specialization = this.specialization.id;
-        this.onboardingModel.class = this.class.id;
+        this.onboardingModel.grade = this.grade.id;
 
         const onboardingResults = await this._userService.completeOnboarding(this.token, this.onboardingModel);
 
         if (onboardingResults.status === 'ok') {
             this._ui.alert(AlertType.Success, '<b>Onboarding completato con successo!</b><br />Effettua il login per cominciare a vendere i tuoi libri', true);
-            // TODO: uncomment in production
-            // this._router.navigate(['/login']);
+            this._router.navigate(['/login']);
         }
 
         // TODO: handle errors

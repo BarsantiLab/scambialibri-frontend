@@ -25,10 +25,10 @@ export class NavbarComponent implements OnInit {
 
     async ngOnInit() {
         if (!this.skipLogin) {
-            this.user = await this._user.getUser(this._auth.user.id, ['currentClass', 'futureClass']);
+            this.user = await this._user.getUser(this._auth.user.id, ['currentGrade', 'futureGrade']);
         }
 
-        // TODO: add current and future class (to be fixed in backend)
+        // TODO: add current and future grade (to be fixed in backend)
     }
 
     logout() {

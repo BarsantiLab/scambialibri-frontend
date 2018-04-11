@@ -12,9 +12,6 @@ import { AlertType } from 'app/models/alert.model';
     styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-    // public mail: string;
-    // public password: string;
-    // public repeatPassword: string;
 
     public mail = 'davide.ross93@gmail.com';
     public password = 'davide12';

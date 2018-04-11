@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { IClass } from 'app/models/class.model';
+import { IGrade } from 'app/models/grade.model';
 import { ISchool } from 'app/models/school.model';
 import { ISpecialization } from 'app/models/specialization.model';
 
@@ -15,23 +15,26 @@ export class SchoolService {
     ) { }
 
     async getSchools() {
-        const url = `${this._config.API.url}/${this._config.API.v}/school`;
+        const url = `${this._config.API.url}/school`;
         const response = await this._http.get(url);
         return await response.json() as ISchool[];
     }
 
     async getSpecializations(school: ISchool) {
-        const url = `${this._config.API.url}/${this._config.API.v}/school/${school.id}/specialization`;
+        const url = `${this._config.API.url}/school/${school.id}/specialization`;
         const response = await this._http.get(url);
         return await response.json() as ISpecialization[];
     }
 
-    async getClasses(school: ISchool, specialization: ISpecialization) {
-        console.log(school);
-
-        const url = `${this._config.API.url}/${this._config.API.v}/school/${school.id}/specialization/${specialization.id}/class`;
-
+    async getGrades(school: ISchool, specialization: ISpecialization) {
+        const url = `${this._config.API.url}/school/${school.id}/specialization/${specialization.id}/grade`;
         const response = await this._http.get(url);
-        return await response.json() as IClass[];
+        return await response.json() as IGrade[];
+    }
+
+    async prepareGradeFilter(school: ISchool) {
+        const url = `${this._config.API.url}/school/${school.id}/grade/prepare`;
+        const response = await this._http.get(url);
+        return await response.json() as IGrade[];
     }
 }

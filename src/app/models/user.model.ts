@@ -6,8 +6,8 @@ export interface IUser {
     firstName?: string;
     lastName?: string;
 
-    currentClass?: string;
-    futureClass?: string;
+    currentGrade?: string;
+    futureGrade?: string;
 
-    onboardingComplete?: boolean;
+    onboardingCompleted?: boolean;
 }

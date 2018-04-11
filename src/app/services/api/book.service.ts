@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import { IBookUnit } from 'app/models/book-unit.model';
-import { IBook } from 'app/models/book.model';
-import { IResult } from 'app/models/result.model';
+import { BookStatus, IBook } from 'app/models/book.model';
+import { IGrade } from 'app/models/grade.model';
+import { ITransaction } from 'app/models/transaction.model';
 
 import { ConfigService } from 'app/services/config.service';
 import { HttpService } from 'app/services/http.service';
 
-export enum BookListType {
-    current = 'current',
-    future = 'future'
+export enum BookMode {
+    buy = 'buy',
+    sell = 'sell'
 }
 
 @Injectable()
@@ -19,25 +19,27 @@ export class BookService {
         private _http: HttpService
     ) { }
 
-    async getBooks(listType: BookListType) {
-        const url = `${this._config.API.url}/${this._config.API.v}/book/${listType}`;
+    async getBooks(mode: BookMode, gradeFilter?: IGrade) {
+        let url = `${this._config.API.url}/book?mode=${mode}`;
+        if (gradeFilter) url += `&grade=${gradeFilter.id}`;
+
         const response = await this._http.get(url);
-        return await response.json() as IBookUnit[];
+        return await response.json() as IBook[];
     }
 
-    async setBookStatus(book: IBookUnit, listType: BookListType) {
-        const url = `${this._config.API.url}/${this._config.API.v}/book/${listType}/${book.book.id}/status`;
+    async createTransaction(book: IBook, mode: BookMode, additionalMaterial?: boolean, bookStatus?: BookStatus) {
+        const url = `${this._config.API.url}/transaction/`;
         const response = await this._http.post(url, {
-            toSell: book.toSell,
-            toBuy: book.toBuy,
-            status: book.status,
-            additionalMaterial: book.additionalMaterial
+            book: book.id,
+            mode, additionalMaterial, bookStatus
         });
+
+        return await response.json() as ITransaction;
     }
 
-    async getResults() {
-        const url = `${this._config.API.url}/${this._config.API.v}/book/results`;
-        const response = await this._http.get(url);
-        return await response.json() as IResult[];
+    async cancelTransaction(transaction: ITransaction) {
+        const url = `${this._config.API.url}/transaction/${transaction.id}`;
+        const response = await this._http.delete(url);
+        return await response.json();
     }
 }

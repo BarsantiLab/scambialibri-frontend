@@ -8,6 +8,6 @@ export class CanActivateOnboarding implements CanActivate {
     constructor(private _auth: AuthService) { }
 
     canActivate() {
-        return this._auth.authenticated && !this._auth.user.onboardingComplete;
+        return this._auth.authenticated && !this._auth.user.onboardingCompleted;
     }
 }

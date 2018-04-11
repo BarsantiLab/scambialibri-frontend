@@ -25,7 +25,7 @@ const routes: Routes = [{
     component: SignupComponent
 }, {
     path: 'onboarding',
-    component: OnboardingComponent, // TODO: remove can-activate onboarding
+    component: OnboardingComponent
 }, {
     path: 'books',
     component: BooksComponent,

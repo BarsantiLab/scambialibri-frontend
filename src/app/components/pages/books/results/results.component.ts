@@ -11,13 +11,13 @@ import { IResult } from 'app/models/result.model';
 })
 export class ResultsComponent implements OnInit {
 
-    results: IResult[];
+    results: IResult[] = [];
 
     constructor(
         private _book: BookService
     ) { }
 
     async ngOnInit() {
-        this.results = await this._book.getResults();
+        // this.results = await this._book.getResults();
     }
 }
