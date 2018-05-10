@@ -1,28 +1,28 @@
-@import "~styles/variables.scss";
+// @import "~styles/variables.scss";
 
-.filter {
-    width: 100%;
-}
+// .filter {
+//     width: 100%;
+// }
 
-table {
-    font-size: 14px;
-    width: 100%;
-    font-weight: 300;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border: 1px solid #ddd;
+// table {
+//     font-size: 14px;
+//     width: 100%;
+//     font-weight: 300;
+//     border-collapse: collapse;
+//     margin-top: 15px;
+//     border: 1px solid #ddd;
 
-    td, th {
-        padding: 15px;
-        background-color: #fff;
-        border-bottom: 1px solid #ddd;
+//     td, th {
+//         padding: 15px;
+//         background-color: #fff;
+//         border-bottom: 1px solid #ddd;
 
-        &.no-books {
-            text-align: center;
-        }
-    }
+//         &.no-books {
+//             text-align: center;
+//         }
+//     }
 
-    tr:nth-child(odd) td {
-        background-color: lighten($accent, 58%);
-    }
-}
+//     tr:nth-child(odd) td {
+//         background-color: lighten($accent, 58%);
+//     }
+// }

@@ -1,35 +1,35 @@
-@import "~styles/variables.scss";
+// @import "~styles/variables.scss";
 
-.navbar {
-    display: flex;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: $nav-bar-height;
+// .navbar {
+//     display: flex;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     height: $nav-bar-height;
 
-    .logo {
-        background-color: #007ACC;
-        border-bottom: 1px solid darken(#757779, 15%);
-        color: white;
-        text-align: center;
-        line-height: $nav-bar-height;
-        flex: 0 0 $sidebar-width;
+//     .logo {
+//         background-color: #007ACC;
+//         border-bottom: 1px solid darken(#757779, 15%);
+//         color: white;
+//         text-align: center;
+//         line-height: $nav-bar-height;
+//         flex: 0 0 $sidebar-width;
 
-        font-size: 1.25em;
-    }
+//         font-size: 1.25em;
+//     }
 
-    .user-data {
-        flex: 1;
-        text-align: right;
-        border-bottom: 1px solid #f0f0f0;
-        background-color: white;
-        line-height: $nav-bar-height;
-        padding: 0 15px;
+//     .user-data {
+//         flex: 1;
+//         text-align: right;
+//         border-bottom: 1px solid #f0f0f0;
+//         background-color: white;
+//         line-height: $nav-bar-height;
+//         padding: 0 15px;
 
-        font-size: 0.9em;
+//         font-size: 0.9em;
 
-        .mail {
-            font-weight: 400;
-        }
-    }
-}
+//         .mail {
+//             font-weight: 400;
+//         }
+//     }
+// }

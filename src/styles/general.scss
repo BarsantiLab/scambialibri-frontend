@@ -1,44 +1,44 @@
 @import "~styles/variables.scss";
 
-h1 {
-    margin: 0;
-    margin-bottom: $gutter;
-    font-weight: 400;
-}
+// h1 {
+//     margin: 0;
+//     margin-bottom: $gutter;
+//     font-weight: 400;
+// }
 
-.container {
-    display: flex;
-    padding: $gutter;
+// .container {
+//     display: flex;
+//     padding: $gutter;
 
-    &.container--no-padding {
-        padding: 0;
-    }
+//     &.container--no-padding {
+//         padding: 0;
+//     }
 
-    &.container--margin-bottom {
-        margin-bottom: $gutter;
-    }
+//     &.container--margin-bottom {
+//         margin-bottom: $gutter;
+//     }
 
-    &.container--column {
-        flex-direction: column;
-    }
+//     &.container--column {
+//         flex-direction: column;
+//     }
 
-    &.container--header {
-        background-color: $accent;
-        color: white;
-    }
+//     &.container--header {
+//         background-color: $accent;
+//         color: white;
+//     }
 
-    &.container--hor-end {
-        justify-content: flex-end;
-    }
+//     &.container--hor-end {
+//         justify-content: flex-end;
+//     }
 
-    .container__item {
-        flex: 1 1 auto;
-        width: 100%;
+//     .container__item {
+//         flex: 1 1 auto;
+//         width: 100%;
 
-        &.container__item--auto {
-            width: auto;
-        }
-    }
-}
+//         &.container__item--auto {
+//             width: auto;
+//         }
+//     }
+// }
 
 @import "~styles/controls.scss";
