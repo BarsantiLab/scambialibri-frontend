@@ -21,6 +21,7 @@ import { CanActivateUser } from './services/can-activate/user.service';
 
 import { BookService } from './services/api/book.service';
 import { SchoolService } from './services/api/school.service';
+import { TransactionService } from './services/api/transaction.service';
 import { UserService } from './services/api/user.service';
 
 import { ToBuyComponent } from './components/pages/books/to-buy/to-buy.component';
@@ -33,11 +34,16 @@ import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
+import { TransactionStatusPipe } from './pipes/transaction-status.pipe';
 
-import { ResultsComponent } from './components/pages/books/results/results.component';
+import { PurchasesReportComponent } from './components/pages/books/purchases-report/purchases-report.component';
+import { SalesReportComponent } from './components/pages/books/sales-report/sales-report.component';
 import { OnboardingComponent } from './components/pages/onboarding/onboarding.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
-import { ResultElementComponent } from './components/ui/result-element/result-element.component';
+import { TransactionComponent } from './components/ui/transaction/transaction.component';
+
+import { OcticonDirective } from './directives/octicon.directive';
+import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
     declarations: [
@@ -52,15 +58,20 @@ import { ResultElementComponent } from './components/ui/result-element/result-el
 
         BookStatusPipe,
         BookPipe,
-
-        ResultsComponent,
+        TransactionStatusPipe,
 
         BookTableComponent,
         NewBookComponent,
-        ResultElementComponent,
 
         SignupComponent,
-        OnboardingComponent
+        OnboardingComponent,
+        PurchasesReportComponent,
+        SalesReportComponent,
+        TransactionComponent,
+
+        OcticonDirective,
+
+        ConfirmationModalComponent
     ],
 
     imports: [
@@ -84,7 +95,8 @@ import { ResultElementComponent } from './components/ui/result-element/result-el
 
         BookService,
         UserService,
-        SchoolService
+        SchoolService,
+        TransactionService
     ],
 
     bootstrap: [AppComponent]

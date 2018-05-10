@@ -7,7 +7,13 @@ export interface ITransaction {
     id?: string;
     book?: IBook;
     user?: IUser;
-    mode: BookMode;
     bookStatus: BookStatus;
     additionalMaterial?: boolean;
+    status?: TransactionStatus;
+}
+
+export enum TransactionStatus {
+    free = 'Libera',
+    pending = 'In trattativa',
+    closed = 'Chiusa'
 }

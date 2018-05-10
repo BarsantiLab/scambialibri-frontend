@@ -27,6 +27,7 @@ export class BookService {
         return await response.json() as IBook[];
     }
 
+    // TODO: move to right service
     async createTransaction(book: IBook, mode: BookMode, additionalMaterial?: boolean, bookStatus?: BookStatus) {
         const url = `${this._config.API.url}/transaction/`;
         const response = await this._http.post(url, {
@@ -37,6 +38,7 @@ export class BookService {
         return await response.json() as ITransaction;
     }
 
+    // TODO: move to right service
     async cancelTransaction(transaction: ITransaction) {
         const url = `${this._config.API.url}/transaction/${transaction.id}`;
         const response = await this._http.delete(url);

@@ -1,0 +1,7 @@
+<div class="modal__backdrop" *ngIf="showModal" (click)="cancel()"></div>
+<div class="modal__container" *ngIf="showModal">
+    <h1>{{currentModal.title}}</h1>
+    <p>{{currentModal.question}}</p>
+    <button (click)="cancel()">{{currentModal.cancelMessage}}</button>
+    <button (click)="confirm()">{{currentModal.confirmMessage}}</button>
+</div>

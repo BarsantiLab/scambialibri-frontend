@@ -117,18 +117,8 @@
             "check-separator",
             "check-type"
         ],
-        "directive-selector": [
-            true,
-            "attribute",
-            "app",
-            "camelCase"
-        ],
-        "component-selector": [
-            false,
-            "element",
-            "app",
-            "kebab-case"
-        ],
+        "directive-selector": false,
+        "component-selector": false,
         "ordered-imports": [true, {
             "import-sources-order": "case-insensitive",
             "named-imports-order": "case-insensitive"
@@ -136,8 +126,8 @@
         "use-input-property-decorator": true,
         "use-output-property-decorator": true,
         "use-host-property-decorator": true,
-        "no-input-rename": true,
-        "no-output-rename": true,
+        "no-input-rename": false,
+        "no-output-rename": false,
         "use-life-cycle-interface": true,
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,

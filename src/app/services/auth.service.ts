@@ -31,8 +31,6 @@ export class AuthService {
         this.user = response.json() as IUser;
         this.token = this.user.accessToken;
 
-        console.log(this.user);
-
         this.saveStateToLocalStorage();
         this.loadStateFromLocalStorage();
     }

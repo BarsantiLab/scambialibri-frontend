@@ -1,0 +1,71 @@
+<!-- HEADER -->
+<div class="container container--header transaction__header">
+    <div class="container__item transaction__header-item">
+        <h3>{{data.book.author}}</h3>
+        <h2>{{data.book.title}}</h2>
+    </div>
+    <div class="container__item transaction__header-item">
+        <h3>ISBN</h3>
+        <h2>{{data.book.isbn}}</h2>
+    </div>
+    <div class="container__item container__item--auto" octicon="triangle-down" octicon-width="32"></div>
+</div>
+
+<!-- SALES LIST -->
+<div class="collapsible transaction__sales-list" *ngIf="data.status === 'free'">
+    <div class="container transaction__sale" *ngFor="let sale of data.sales">
+        <div class="container__item">{{sale.seller.firstName}} {{sale.seller.lastName}}</div>
+        <div class="container__item">{{sale.status | transactionStatus}}</div>
+        <div class="container__item">{{sale.bookStatus | bookStatus}}</div>
+        <div class="container__item">{{sale.additionalMaterial ? 'Materiale addizionale fornito' : 'Nessun materiale addizionale'}}</div>
+        <div class="container__item container__item--auto">
+            <button [disabled]="sale.status !== 'free'" (click)="pairTransaction(data, sale)">Contatta</button>
+        </div>
+    </div>
+</div>
+
+<!-- CHAT HEADER -->
+<div class="collapsible transaction__chat-header" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+    <div class="container container--column">
+        <div class="container container--no-padding">
+            <h1>{{data.pairedUser.firstName}} {{data.pairedUser.lastName}}</h1>
+        </div>
+        <div class="container container--no-padding container--margin-bottom">
+            <div class="container__item">
+                <a [href]="'mailto:' + data.pairedUser.mail">{{data.pairedUser.mail}}</a>
+            </div>
+            <div class="container__item">{{data.pairedUser.address}}, {{data.pairedUser.city}} ({{data.pairedUser.province}})</div>
+        </div>
+        <div class="container container--no-padding container--margin-bottom">
+            <div class="container__item">{{data.pairedUser.phone}}</div>
+            <div class="container__item">{{data.pairedUser.schoolName}}</div>
+        </div>
+        <div class="container container--no-padding container--hor-end">
+            <button (click)="cancelTransaction()">Annulla</button>
+            <button (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled">Non risponde</button>
+            <button>Completato</button>
+        </div>
+    </div>
+</div>
+
+<!-- CHAT -->
+<div class="collapsible transaction__chat" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+    <div class="transaction__chat-item-wrapper transaction__chat-item-wrapper--center" *ngIf="data.messages.length === 0">
+        <div class="transaction__chat-item--clean">
+            Scrivi il primo messaggio!
+        </div>
+    </div>
+    <div class="transaction__chat-item-wrapper" *ngFor="let message of data.messages" [ngClass]="{ 'transaction__chat-item-wrapper--sent': message.sent }">
+        <div class="transaction__chat-item">
+            {{message.content}}
+        </div>
+    </div>
+</div>
+
+<!-- CHAT BAR -->
+<div class="collapsible transaction__chat-bar" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+    <div class="container">
+        <input type="text" class="transaction__chat-input" [(ngModel)]="messageText" (keyup.enter)="sendMessage()">
+        <button class="transaction__chat-button" octicon="arrow-right" (click)="sendMessage()"></button>
+    </div>
+</div>
