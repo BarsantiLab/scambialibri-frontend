@@ -5,7 +5,7 @@
         <h2>{{data.book.title}}</h2>
     </div>
     <div class="container__item transaction__header-item">
-        <h3>ISBN</h3>
+        <h3>ISBN - {{data.status}}</h3>
         <h2>{{data.book.isbn}}</h2>
     </div>
     <div class="container__item container__item--auto" octicon="triangle-down" octicon-width="32"></div>
@@ -43,7 +43,7 @@
         <div class="container container--no-padding container--hor-end">
             <button (click)="cancelTransaction()">Annulla</button>
             <button (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled">Non risponde</button>
-            <button>Completato</button>
+            <button (click)="completeTransaction()">Completato</button>
         </div>
     </div>
 </div>

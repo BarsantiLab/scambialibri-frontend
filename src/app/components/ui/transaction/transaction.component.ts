@@ -85,7 +85,7 @@ export class TransactionComponent implements OnInit {
             confirmMessage: 'Sì',
             cancelMessage: 'No',
             confirm: async () => {
-                // TODO: complete method
+                await this._transaction.reportCompleted(this.data as ITransaction);
             }
         });
     }

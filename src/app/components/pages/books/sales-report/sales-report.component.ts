@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TransactionService } from 'app/services/api/transaction.service';
+
 @Component({
     selector: 'app-sales-report',
     templateUrl: './sales-report.component.html',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalesReportComponent implements OnInit {
 
-    constructor() { }
+    transactions: any[] = [];
 
-    ngOnInit() { }
+    constructor(
+        private _transaction: TransactionService
+    ) { }
+
+    async ngOnInit() {
+        this.transactions = await this._transaction.getSales();
+    }
 }
