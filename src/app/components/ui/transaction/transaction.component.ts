@@ -12,7 +12,8 @@ import { UiService } from 'app/services/ui.service';
 })
 export class TransactionComponent implements OnInit {
     // TODO: remove outline to send message button
-    // TODO: add date
+    // IMPROVE: add date to message
+    // TODO: fix TransactionStatus enum problem
 
     @Input() data: any;
 
@@ -33,11 +34,11 @@ export class TransactionComponent implements OnInit {
             cancelMessage: 'No',
             confirm: async () => {
                 const out = await this._transaction.pairTransaction(trans1, trans2);
-                this.data.status = TransactionStatus.pending;
+                this.data.status = 'pending';
+                this.data.pairedUser = out.pairedUser;
+                this.data.messages = [];
             }
         });
-
-        // TODO: fix not changing status (maybe)
     }
 
     async sendMessage() {
@@ -49,6 +50,9 @@ export class TransactionComponent implements OnInit {
             date: new Date()
         });
 
+        // TODO: set status back to pending
+        // IMPROVE: show modal if status is not responding
+
         this.messageText = '';
     }
 
@@ -59,8 +63,9 @@ export class TransactionComponent implements OnInit {
             confirmMessage: 'Sì',
             cancelMessage: 'No',
             confirm: async () => {
-                await this._transaction.cancelTransaction(this.data as ITransaction);
-                this.data.status = TransactionStatus.free;
+                const out = await this._transaction.cancelTransaction(this.data as ITransaction);
+                this.data.status = 'free';
+                this.data.sales = out.sales;
             }
         });
     }
@@ -73,7 +78,7 @@ export class TransactionComponent implements OnInit {
             cancelMessage: 'No',
             confirm: async () => {
                 await this._transaction.reportNotResponding(this.data as ITransaction);
-                // TODO: add alert message
+                this.data.status = 'notResponding';
             }
         });
     }
@@ -86,6 +91,7 @@ export class TransactionComponent implements OnInit {
             cancelMessage: 'No',
             confirm: async () => {
                 await this._transaction.reportCompleted(this.data as ITransaction);
+                this.data.status = 'inCompletion';
             }
         });
     }

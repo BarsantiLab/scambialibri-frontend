@@ -5,10 +5,14 @@
         <h2>{{data.book.title}}</h2>
     </div>
     <div class="container__item transaction__header-item">
-        <h3>ISBN - {{data.status}}</h3>
+        <h3>ISBN</h3>
         <h2>{{data.book.isbn}}</h2>
     </div>
-    <div class="container__item container__item--auto" octicon="triangle-down" octicon-width="32"></div>
+    <div class="container__item transaction__header-item container__item transaction__header-item--short">
+        <h3>Stato transazione</h3>
+        <h2>{{data.status | transactionStatus}}</h2>
+    </div>
+    <!-- <div class="container__item container__item--auto" octicon="triangle-down" octicon-width="32"></div> -->
 </div>
 
 <!-- SALES LIST -->
@@ -41,8 +45,8 @@
             <div class="container__item">{{data.pairedUser.schoolName}}</div>
         </div>
         <div class="container container--no-padding container--hor-end">
-            <button (click)="cancelTransaction()">Annulla</button>
-            <button (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled">Non risponde</button>
+            <button (click)="cancelTransaction()" [disabled]="data.status === 'inCompletion'">Annulla</button>
+            <button (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled || data.status === 'notResponding'">Non risponde</button>
             <button (click)="completeTransaction()">Completato</button>
         </div>
     </div>
@@ -68,4 +72,9 @@
         <input type="text" class="transaction__chat-input" [(ngModel)]="messageText" (keyup.enter)="sendMessage()">
         <button class="transaction__chat-button" octicon="arrow-right" (click)="sendMessage()"></button>
     </div>
+</div>
+
+<!-- COMPLETED -->
+<div class="collapsible transaction__completed" *ngIf="data.status === 'completed'">
+    <p>La transazione è stata completata.</p>
 </div>

@@ -2,6 +2,15 @@
 
 .filter {
     width: 100%;
+    display: flex;
+
+    input, select {
+        flex: 1;
+    }
+
+    input {
+        margin-right: $gutter;
+    }
 }
 
 table {
@@ -19,6 +28,15 @@ table {
 
         &.no-books {
             text-align: center;
+        }
+
+        select {
+            min-width: 200px;
+            padding: 5px;
+        }
+
+        button {
+            width: 75px;
         }
     }
 

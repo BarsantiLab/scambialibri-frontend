@@ -24,7 +24,7 @@ export class TransactionService {
         return response.json();
     }
 
-    async pairTransaction(trans1: ITransaction, trans2: ITransaction): Promise<void> {
+    async pairTransaction(trans1: ITransaction, trans2: ITransaction): Promise<any> {
         const url = `${this._config.API.url}/transaction/${trans1.id}/pair`;
         const response = await this._http.post(url, {
             transaction: trans2.id
@@ -40,7 +40,7 @@ export class TransactionService {
         return await response.json();
     }
 
-    async cancelTransaction(trans: ITransaction): Promise<void> {
+    async cancelTransaction(trans: ITransaction): Promise<any> {
         const url = `${this._config.API.url}/transaction/${trans.id}/cancel`;
         const response = await this._http.post(url);
 

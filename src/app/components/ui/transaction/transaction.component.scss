@@ -12,6 +12,11 @@
                 padding-right: $gutter * 2;
             }
 
+            &.transaction__header-item--short {
+                flex: 0 0 200px;
+                text-align: right;
+            }
+
             h2, h3 {
                 margin: 0;
             }
@@ -108,5 +113,11 @@
             border: 0;
             border: 1px solid #ddd;
         }
+    }
+
+    .transaction__completed p {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
     }
 }
