@@ -13,6 +13,7 @@ import { OnboardingComponent } from 'app/components/pages/onboarding/onboarding.
 import { SignupComponent } from 'app/components/pages/signup/signup.component';
 import { PurchasesReportComponent } from '../components/pages/books/purchases-report/purchases-report.component';
 import { SalesReportComponent } from '../components/pages/books/sales-report/sales-report.component';
+import { PrivacyPolicyComponent } from '../components/pages/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [{
     path: '',
@@ -24,6 +25,9 @@ const routes: Routes = [{
 }, {
     path: 'signup',
     component: SignupComponent
+}, {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent
 }, {
     path: 'onboarding',
     component: OnboardingComponent

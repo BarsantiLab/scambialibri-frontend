@@ -1,7 +1,21 @@
 // @import "~styles/variables.scss";
 
+
 // .filter {
 //     width: 100%;
+// }
+
+// .filter {
+//     width: 100%;
+//     display: flex;
+
+//     input, select {
+//         flex: 1;
+//     }
+
+//     input {
+//         margin-right: $gutter;
+//     }
 // }
 
 // table {
@@ -21,6 +35,20 @@
 //             text-align: center;
 //         }
 //     }
+
+//     &.no-books {
+//         text-align: center;
+//     }
+
+//     select {
+//         min-width: 200px;
+//         padding: 5px;
+//     }
+
+//     button {
+//         width: 75px;
+//     }
+// }
 
 //     tr:nth-child(odd) td {
 //         background-color: lighten($accent, 58%);

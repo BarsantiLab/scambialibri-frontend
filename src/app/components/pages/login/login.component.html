@@ -5,7 +5,7 @@
 
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
             <div class="input-container">
-                <input type="email" placeholder="Indirizzo e-mail" [(ngModel)]="mail" formControlName="mail" />
+                <input type="email" placeholder="Indirizzo e-mail" [(ngModel)]="mail" formControlName="mail" autofocus />
                 <span class="error" *ngIf="loginForm.get('mail').invalid && loginForm.get('mail').touched">Inserisci il tuo indirizzo e-mail!</span>
             </div>
 

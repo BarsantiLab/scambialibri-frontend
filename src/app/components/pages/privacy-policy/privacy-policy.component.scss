@@ -1,0 +1,12 @@
+.privacy-policy {
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p, h1 {
+        max-width: 800px;
+        width: 70%;
+    }
+}

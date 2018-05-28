@@ -15,5 +15,8 @@ export interface ITransaction {
 export enum TransactionStatus {
     free = 'Libera',
     pending = 'In trattativa',
-    closed = 'Chiusa'
+    closed = 'Chiusa',
+    notResponding = 'Non risponde',
+    inCompletion = 'In completamento',
+    completed = 'Completata'
 }

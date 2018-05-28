@@ -20,15 +20,17 @@ export class OnboardingComponent implements OnInit {
 
     @ViewChild('onboardingForm') onboardingForm;
 
-    onboardingModel: any = {
-        firstName: 'Davide',
-        lastName: 'Rossetto',
-        phone: '3483258988',
-        address: 'Via Spellatteria Alta 24/B',
-        city: 'Trebaseleghe',
-        zipCode: '35010',
-        province: 'PD'
-    };
+    // onboardingModel: any = {
+    //     firstName: 'Davide',
+    //     lastName: 'Rossetto',
+    //     phone: '3483258988',
+    //     address: 'Via Spellatteria Alta 24/B',
+    //     city: 'Trebaseleghe',
+    //     zipCode: '35010',
+    //     province: 'PD'
+    // };
+
+    onboardingModel: any = {};
 
     token: string;
     showError = false;

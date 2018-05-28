@@ -12,6 +12,11 @@
                 padding-right: $gutter * 2;
             }
 
+            &.transaction__header-item--short {
+                flex: 0 0 200px;
+                text-align: right;
+            }
+
             h2, h3 {
                 margin: 0;
             }
@@ -32,12 +37,16 @@
     .transaction__sales-list {
         .transaction__sale {
             background-color: white;
+            border-bottom: 1px solid $table-border;
 
             &:nth-child(even) {
                 background-color: lighten($accent, 58%);
             }
 
-            border-bottom: 1px solid $table-border;
+            &.transaction__sale--empty {
+                justify-content: center;
+                font-weight: bold;
+            }
         }
     }
 
@@ -108,5 +117,11 @@
             border: 0;
             border: 1px solid #ddd;
         }
+    }
+
+    .transaction__completed p {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
     }
 }

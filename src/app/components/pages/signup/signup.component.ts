@@ -13,16 +13,22 @@ import { AlertType } from 'app/models/alert.model';
 })
 export class SignupComponent implements OnInit {
 
-    public mail = 'davide.ross93@gmail.com';
-    public password = 'davide12';
-    public repeatPassword = 'davide12';
+    // public mail = 'davide.ross93@gmail.com';
+    // public password = 'davide12';
+    // public repeatPassword = 'davide12';
 
-    public loading = false;
+    mail: string;
+    password: string;
+    repeatPassword: string;
+    privacy: boolean;
+
+    loading = false;
 
     signupForm = new FormGroup({
         mail: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        repeatPassword: new FormControl('', [Validators.required, Validators.minLength(5)])
+        repeatPassword: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        privacy: new FormControl(false, [Validators.requiredTrue])
     });
 
     constructor(

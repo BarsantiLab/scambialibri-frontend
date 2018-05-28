@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -43,7 +43,11 @@ import { SignupComponent } from './components/pages/signup/signup.component';
 import { TransactionComponent } from './components/ui/transaction/transaction.component';
 
 import { OcticonDirective } from './directives/octicon.directive';
+
 import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
+
+import { GenericErrorHandler } from './modules/generic-error-handler';
+import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
     declarations: [
@@ -71,7 +75,9 @@ import { ConfirmationModalComponent } from './components/ui/confirmation-modal/c
 
         OcticonDirective,
 
-        ConfirmationModalComponent
+        ConfirmationModalComponent,
+
+        PrivacyPolicyComponent
     ],
 
     imports: [
@@ -96,7 +102,12 @@ import { ConfirmationModalComponent } from './components/ui/confirmation-modal/c
         BookService,
         UserService,
         SchoolService,
-        TransactionService
+        TransactionService,
+
+        {
+            provide: ErrorHandler,
+            useClass: GenericErrorHandler
+        }
     ],
 
     bootstrap: [AppComponent]

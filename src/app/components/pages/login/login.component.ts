@@ -6,6 +6,7 @@ import { AuthService } from '../../../services/auth.service';
 import { UiService } from '../../../services/ui.service';
 
 import { AlertType } from '../../../models/alert.model';
+import { IUser } from '../../../models/user.model';
 
 @Component({
     selector: 'login-page',
@@ -13,9 +14,11 @@ import { AlertType } from '../../../models/alert.model';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    public mail = 'davide.ross93@gmail.com';
-    public password = 'davide12';
-    public loading  = false;
+    // public mail = 'davide.ross93@gmail.com';
+    // public password = 'davide12';
+    mail: string;
+    password: string;
+    loading = false;
 
     loginForm = new FormGroup({
         mail: new FormControl('', Validators.required),
@@ -35,10 +38,17 @@ export class LoginComponent {
 
         try {
             this.loading = true;
-            await this._auth.login(this.mail, this.password);
+            const user: IUser = await this._auth.login(this.mail, this.password);
 
-            this._ui.alert(AlertType.Success, 'Login effettuato con successo!');
-            this._router.navigate(['/books']);
+            if (user.onboardingCompleted) {
+                this._ui.alert(AlertType.Success, 'Login effettuato con successo!');
+                this._router.navigate(['/books']);
+            } else {
+                this._ui.alert(AlertType.Warning,
+                    '<b>Non hai completato la procedura di onboarding!</b><br>Verifica la tua casella l\'e-mail di benvenuto!',
+                    true
+                );
+            }
         } catch (err) {
             // TODO: creare error handler
             if (err.status === 401) {

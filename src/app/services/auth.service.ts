@@ -20,7 +20,7 @@ export class AuthService {
         this.loadStateFromLocalStorage();
     }
 
-    async login(mail, password): Promise<any> {
+    async login(mail, password): Promise<IUser> {
         this.clearToken();
 
         const response = await this._http.post(`${this._config.API.url}/user/login`, {
@@ -33,6 +33,8 @@ export class AuthService {
 
         this.saveStateToLocalStorage();
         this.loadStateFromLocalStorage();
+
+        return this.user;
     }
 
     async signup(mail, password): Promise<any> {
