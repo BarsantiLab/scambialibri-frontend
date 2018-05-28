@@ -72,7 +72,7 @@
             <tr>
                 <th>Autore</th>
                 <th>Titolo</th>
-                <!-- <th>ISBN</th> -->
+                <th>ISBN</th>
                 <th *ngIf="showStatus">Stato</th>
                 <th *ngIf="showStatus">Mat. agg.</th>
                 <th>Azioni</th>
@@ -83,7 +83,7 @@
             <tr *ngFor="let book of books | book: searchString">
                 <td>{{book.author}}</td>
                 <td>{{book.title}}</td>
-                <!-- <td>{{book.isbn}}</td> -->
+                <td>{{book.isbn}}</td>
                 <td *ngIf="showStatus">
                     <select class="custom-select" *ngIf="!lockStatus" [(ngModel)]="book.transaction.bookStatus" [disabled]="book.toSell">
                         <option ngValue="new">Nuovo</option>
@@ -100,7 +100,7 @@
                     </label>
                     <span *ngIf="lockStatus">Sì</span>
                 </td>
-                <td><button class="btn btn-secondary" [disabled]="mode === 'sell' && !book.transaction.bookStatus" (click)="buttonClicked(book)">{{ book.transaction.id ? altButtonLabel : buttonLabel}}</button></td>
+                <td><button class="btn btn-secondary btn-sm" [disabled]="mode === 'sell' && !book.transaction.bookStatus" (click)="buttonClicked(book)">{{ book.transaction.id ? altButtonLabel : buttonLabel}}</button></td>
             </tr>
         </tbody>
     </table>
