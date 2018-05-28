@@ -12,7 +12,6 @@
         <h3>Stato transazione</h3>
         <h2>{{data.status | transactionStatus}}</h2>
     </div>
-    <!-- <div class="container__item container__item--auto" octicon="triangle-down" octicon-width="32"></div> -->
 </div>
 
 <!-- SALES LIST -->
@@ -25,6 +24,14 @@
         <div class="container__item container__item--auto">
             <button [disabled]="sale.status !== 'free'" (click)="pairTransaction(data, sale)">Contatta</button>
         </div>
+    </div>
+
+    <div class="container transaction__sale transaction__sale--empty" *ngIf="data.sales && data.sales.length === 0">
+        Nessun libro disponibile al momento! Controlla periodicamente l'inserimento di nuovi libri nel circuito.
+    </div>
+
+    <div class="container transaction__sale transaction__sale--empty" *ngIf="!data.sales">
+        Nessun acquirente ti ha ancora contattato. Nel caso succedesse ti arriverà una notifica via e-mail.
     </div>
 </div>
 

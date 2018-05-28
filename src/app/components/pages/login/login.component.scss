@@ -63,6 +63,10 @@ $gutter: 25px;
                 color: white;
                 transition: border-color .2s;
 
+                &::placeholder {
+                    color: rgba(white, .5);
+                }
+
                 &:focus {
                     outline: none;
                     border-color: #007ACC;

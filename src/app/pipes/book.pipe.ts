@@ -12,7 +12,7 @@ export class BookPipe implements PipeTransform {
 
         return items.filter((book) => {
             const regex = new RegExp(filter, 'mi');
-            return regex.test(book.author) || regex.test(book.title);
+            return regex.test(book.author) || regex.test(book.title) || regex.test(book.isbn.toString());
         });
     }
 }

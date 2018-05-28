@@ -37,12 +37,16 @@
     .transaction__sales-list {
         .transaction__sale {
             background-color: white;
+            border-bottom: 1px solid $table-border;
 
             &:nth-child(even) {
                 background-color: lighten($accent, 58%);
             }
 
-            border-bottom: 1px solid $table-border;
+            &.transaction__sale--empty {
+                justify-content: center;
+                font-weight: bold;
+            }
         }
     }
 

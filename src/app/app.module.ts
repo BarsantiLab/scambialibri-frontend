@@ -47,6 +47,7 @@ import { OcticonDirective } from './directives/octicon.directive';
 import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
 
 import { GenericErrorHandler } from './modules/generic-error-handler';
+import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
     declarations: [
@@ -74,7 +75,9 @@ import { GenericErrorHandler } from './modules/generic-error-handler';
 
         OcticonDirective,
 
-        ConfirmationModalComponent
+        ConfirmationModalComponent,
+
+        PrivacyPolicyComponent
     ],
 
     imports: [

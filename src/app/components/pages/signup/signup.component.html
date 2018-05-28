@@ -19,6 +19,12 @@
                 <span class="error" *ngIf="signupForm.get('repeatPassword').invalid && signupForm.get('repeatPassword').touched || password !== repeatPassword">Inserisci la password inserita sopra!</span>
             </div>
 
+            <div class="input-container input-container--blank">
+                <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" formControlName="privacy" required>
+                <label for="privacy-policy">Acconsento l'<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dai personali.</label>
+                <span class="error" *ngIf="!signupForm.get('privacy').invalid && signupForm.get('privacy').touched">È necessario accettare l'Informativa sulla Privacy per continuare!</span>
+            </div>
+
             <button [disabled]="signupForm.touched && !signupForm.valid">Registrati</button>
             <a routerLink="/login">Hai già un account? Entra ora!</a>
         </form>
