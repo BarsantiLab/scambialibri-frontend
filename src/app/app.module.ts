@@ -30,7 +30,6 @@ import { AlertComponent } from './components/ui/alert/alert.component';
 import { BookTableComponent } from './components/ui/book-table/book-table.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
 import { NewBookComponent } from './components/ui/new-book/new-book.component';
-import { SidebarComponent } from './components/ui/sidebar/sidebar.component';
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
@@ -46,7 +45,6 @@ import { OcticonDirective } from './directives/octicon.directive';
 
 import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
 
-import { GenericErrorHandler } from './modules/generic-error-handler';
 import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
@@ -56,7 +54,6 @@ import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privac
         BooksComponent,
         AlertComponent,
         NavbarComponent,
-        SidebarComponent,
         ToBuyComponent,
         ToSellComponent,
 
@@ -102,12 +99,7 @@ import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privac
         BookService,
         UserService,
         SchoolService,
-        TransactionService,
-
-        {
-            provide: ErrorHandler,
-            useClass: GenericErrorHandler
-        }
+        TransactionService
     ],
 
     bootstrap: [AppComponent]

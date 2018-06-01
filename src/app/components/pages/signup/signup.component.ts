@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from 'app/services/auth.service';
 import { UiService } from 'app/services/ui.service';
@@ -23,20 +23,22 @@ export class SignupComponent implements OnInit {
     privacy: boolean;
 
     loading = false;
-
-    signupForm = new FormGroup({
-        mail: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        repeatPassword: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        privacy: new FormControl(false, [Validators.requiredTrue])
-    });
+    signupForm: FormGroup;
 
     constructor(
         private _auth: AuthService,
-        private _ui: UiService
+        private _ui: UiService,
+        private _fb: FormBuilder
     ) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.signupForm = this._fb.group({
+            mail: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(5)]],
+            repeatPassword: ['', [Validators.required, Validators.minLength(5)]],
+            privacy: ['', Validators.requiredTrue]
+        });
+    }
 
     async signup() {
         // TODO: print error

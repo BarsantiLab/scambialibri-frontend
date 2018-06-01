@@ -30,75 +30,90 @@
                 </tr>
 
                 <tr *ngIf="data.sales && data.sales.length === 0">
-                    <td colspan="5">Nessun libro disponibile al momento! Controlla periodicamente l'inserimento di nuovi libri nel circuito.</td>
+                    <td colspan="5">
+                        <p class="text-center m-0">
+                            Nessun libro disponibile al momento! Controlla periodicamente l'inserimento di nuovi libri nel circuito.
+                        </p>
+                    </td>
                 </tr>
 
                 <tr *ngIf="!data.sales">
-                    <td colspan="5">Nessun acquirente ti ha ancora contattato. Nel caso succedesse ti arriverà una notifica via e-mail.</td>
+                    <td colspan="5">
+                        <p class="text-center m-0">
+                            Nessun acquirente ti ha ancora contattato. Nel caso succedesse ti arriverà una notifica via e-mail.
+                        </p>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <!-- INFO BOX -->
-    <div class="card-body p-0 border-top-0" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+    <div class="card-body border-top-0" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
         <div class="container p-0">
-            <div class="row no-gutters">
+            <div class="row mb-2">
                 <div class="col">
-                    <h1>{{data.pairedUser.firstName}} {{data.pairedUser.lastName}}</h1>
+                    <h1 class="display-4 m-0">{{data.pairedUser.firstName}} {{data.pairedUser.lastName}}</h1>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col">
+                    <a [href]="'mailto:' + data.pairedUser.mail">{{data.pairedUser.mail}}</a>
+                </div>
+
+                <div class="col">
+                    {{data.pairedUser.address}}, {{data.pairedUser.city}} ({{data.pairedUser.province}})
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col">
+                    {{data.pairedUser.phone}}
+                </div>
+
+                <div class="col">
+                    {{data.pairedUser.schoolName}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-right">
+                    <button class="btn btn-secondary btn-sm" (click)="cancelTransaction()" [disabled]="data.status === 'inCompletion'">Annulla</button>
+                    <button class="btn btn-secondary btn-sm" (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled || data.status === 'notResponding'">Non risponde</button>
+                    <button class="btn btn-secondary btn-sm" (click)="completeTransaction()">Completato</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- CHAT HEADER -->
-<!-- <div class="collapsible transaction__chat-header" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
-    <div class="container container--column">
-        <div class="container container--no-padding">
-            <h1>{{data.pairedUser.firstName}} {{data.pairedUser.lastName}}</h1>
-        </div>
-        <div class="container container--no-padding container--margin-bottom">
-            <div class="container__item">
-                <a [href]="'mailto:' + data.pairedUser.mail">{{data.pairedUser.mail}}</a>
+    <!-- CHAT -->
+    <div class="card-body border-top-0 bg-chat" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+        <div class="container p-0">
+            <div class="row" *ngIf="data.messages.length === 0">
+                <p class="text-center m-0 w-100">
+                    Scrivi il primo messaggio!
+                </p>
             </div>
-            <div class="container__item">{{data.pairedUser.address}}, {{data.pairedUser.city}} ({{data.pairedUser.province}})</div>
-        </div>
-        <div class="container container--no-padding container--margin-bottom">
-            <div class="container__item">{{data.pairedUser.phone}}</div>
-            <div class="container__item">{{data.pairedUser.schoolName}}</div>
-        </div>
-        <div class="container container--no-padding container--hor-end">
-            <button (click)="cancelTransaction()" [disabled]="data.status === 'inCompletion'">Annulla</button>
-            <button (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled || data.status === 'notResponding'">Non risponde</button>
-            <button (click)="completeTransaction()">Completato</button>
-        </div>
-    </div>
-</div> -->
 
-<!-- CHAT -->
-<!-- <div class="collapsible transaction__chat" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
-    <div class="transaction__chat-item-wrapper transaction__chat-item-wrapper--center" *ngIf="data.messages.length === 0">
-        <div class="transaction__chat-item--clean">
-            Scrivi il primo messaggio!
+            <div class="row" *ngFor="let message of data.messages; last as isLast" [ngClass]="{ 'justify-content-end': message.sent, 'mb-2': !isLast }">
+                <div class="col col-chat bg-white border rounded-chat p-3">
+                    {{message.content}}
+                </div>
+            </div>
         </div>
     </div>
-    <div class="transaction__chat-item-wrapper" *ngFor="let message of data.messages" [ngClass]="{ 'transaction__chat-item-wrapper--sent': message.sent }">
-        <div class="transaction__chat-item">
-            {{message.content}}
+
+    <!-- CHAT BAR -->
+    <div class="card-body border-top-0 p-2" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+        <div class="d-flex p-0">
+            <input class="form-control" type="text" [(ngModel)]="messageText" (keyup.enter)="sendMessage()" />
+            <button class="btn btn-icon btn-success ml-2" (click)="sendMessage()"><i class="fe fe-send"></i></button>
         </div>
     </div>
-</div> -->
 
-<!-- CHAT BAR -->
-<!-- <div class="collapsible transaction__chat-bar" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
-    <div class="container">
-        <input type="text" class="transaction__chat-input" [(ngModel)]="messageText" (keyup.enter)="sendMessage()">
-        <button class="transaction__chat-button" octicon="arrow-right" (click)="sendMessage()"></button>
+    <!-- COMPLETED MESSAGE -->
+    <div class="card-body border-top-0" *ngIf="data.status === 'completed'">
+        <p class="text-center">La transazione è stata completata!</p>
     </div>
-</div> -->
-
-<!-- COMPLETED -->
-<!-- <div class="collapsible transaction__completed" *ngIf="data.status === 'completed'">
-    <p>La transazione è stata completata.</p>
-</div> -->
+</div>

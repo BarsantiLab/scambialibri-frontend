@@ -1,49 +1,3 @@
-<!-- <div class="filter">
-    <input type="text" placeholder="Filtra per nome" [(ngModel)]="searchString" />
-    <select [(ngModel)]="filterGrade" name="filterGrade" (ngModelChange)="onFilterGradeChange()">
-        <option *ngFor="let grade of grades" [ngValue]="grade">{{grade.year}}{{grade.section}} - {{grade.specializationName}}</option>
-    </select>
-</div>
-<table>
-    <thead>
-        <tr>
-            <th>Autore</th>
-            <th>Titolo</th>
-            <th>ISBN</th>
-            <th *ngIf="showStatus">Stato</th>
-            <th *ngIf="showStatus">Mat. agg.</th>
-            <th>Azioni</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr *ngFor="let book of books | book: searchString">
-            <td>{{book.author}}</td>
-            <td>{{book.title}}</td>
-            <td>{{book.isbn}}</td>
-            <td *ngIf="showStatus">
-                <select *ngIf="!lockStatus" [(ngModel)]="book.transaction.bookStatus" [disabled]="book.toSell">
-                    <option ngValue="new">Nuovo</option>
-                    <option ngValue="pencilNotes">Note a matita</option>
-                    <option ngValue="penNotes">Note a penna</option>
-                    <option ngValue="badConditions">Cattive condizioni</option>
-                </select>
-                <span *ngIf="lockStatus">{{ book.bookStatus | bookStatus }}</span>
-            </td>
-            <td *ngIf="showStatus">
-                <input *ngIf="!lockStatus" type="checkbox" [(ngModel)]="book.transaction.additionalMaterial" [disabled]="book.toSell">
-                <span *ngIf="lockStatus">Sì</span>
-            </td>
-            <td><button [disabled]="mode === 'sell' && !book.transaction.bookStatus" (click)="buttonClicked(book)">{{ book.transaction.id ? altButtonLabel : buttonLabel}}</button></td>
-        </tr>
-        <tr *ngIf="!books || (books | book: searchString).length === 0">
-            <td colspan="7" class="no-books">
-                <b>Nessun libro disponibile!</b>
-            </td>
-        </tr>
-    </tbody>
-</table> -->
-
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -85,7 +39,7 @@
                 <td>{{book.title}}</td>
                 <td>{{book.isbn}}</td>
                 <td *ngIf="showStatus">
-                    <select class="custom-select" *ngIf="!lockStatus" [(ngModel)]="book.transaction.bookStatus" [disabled]="book.toSell">
+                    <select class="custom-select" *ngIf="!lockStatus" [(ngModel)]="book.transaction.bookStatus" [disabled]="book.transaction.id">
                         <option ngValue="new">Nuovo</option>
                         <option ngValue="pencilNotes">Note a matita</option>
                         <option ngValue="penNotes">Note a penna</option>
@@ -95,12 +49,12 @@
                 </td>
                 <td *ngIf="showStatus">
                     <label *ngIf="!lockStatus" class="custom-switch">
-                        <input type="checkbox" class="custom-switch-input" [(ngModel)]="book.transaction.additionalMaterial" [disabled]="book.toSell">
+                        <input type="checkbox" class="custom-switch-input" [(ngModel)]="book.transaction.additionalMaterial" [disabled]="book.transaction.id">
                         <span class="custom-switch-indicator"></span>
                     </label>
                     <span *ngIf="lockStatus">Sì</span>
                 </td>
-                <td><button class="btn btn-secondary btn-sm" [disabled]="mode === 'sell' && !book.transaction.bookStatus" (click)="buttonClicked(book)">{{ book.transaction.id ? altButtonLabel : buttonLabel}}</button></td>
+                <td><button [ngClass]="{'btn-primary': !book.transaction.id, 'btn-danger': book.transaction.id}" class="btn btn-sm" [disabled]="mode === 'sell' && !book.transaction.bookStatus" (click)="buttonClicked(book)">{{ book.transaction.id ? altButtonLabel : buttonLabel}}</button></td>
             </tr>
         </tbody>
     </table>

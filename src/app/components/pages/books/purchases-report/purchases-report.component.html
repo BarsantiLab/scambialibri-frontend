@@ -1,10 +1,16 @@
-<h1>Resoconto acquisti</h1>
-<transaction *ngFor="let transaction of transactions" [data]="transaction"></transaction>
-<div class="purchases-report__no-transactions" *ngIf="transactions.length === 0">
-    <h2>
-        Nessun acquisto effettuato!
-    </h2>
-    <p>
-        Vai alla pagina <a routerLink="/books/to-buy">"Da acquistare"</a> per selezionare i libri che intendi acquistare.
-    </p>
+<div class="page-header">
+    <h1 class="page-title">Resoconto acquisti</h1>
+</div>
+<div class="row">
+    <div class="col-12">
+        <transaction *ngFor="let transaction of transactions" [data]="transaction"></transaction>
+        <div class="purchases-report__no-transactions" *ngIf="transactions.length === 0">
+            <h2>
+                Nessun acquisto effettuato!
+            </h2>
+            <p>
+                Vai alla pagina <a routerLink="/books/to-buy">"Da acquistare"</a> per selezionare i libri che intendi acquistare.
+            </p>
+        </div>            
+    </div>
 </div>

@@ -1,3 +1,17 @@
+:host {
+    .bg-chat {
+        background-color: #EEEEEE !important;
+    }
+
+    .rounded-chat {
+        border-radius: 10px;
+    }
+
+    .col-chat {
+        max-width: 500px;
+    }
+}
+
 // @import "~styles/variables.scss";
 
 // :host {

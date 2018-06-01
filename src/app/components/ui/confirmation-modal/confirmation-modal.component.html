@@ -1,7 +1,19 @@
-<div class="modal__backdrop" *ngIf="showModal" (click)="cancel()"></div>
-<div class="modal__container" *ngIf="showModal">
-    <h1>{{currentModal.title}}</h1>
-    <p>{{currentModal.question}}</p>
-    <button (click)="cancel()">{{currentModal.cancelMessage}}</button>
-    <button (click)="confirm()">{{currentModal.confirmMessage}}</button>
+<div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'in': visibleAnimate}" [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}" (click)="onContainerClicked($event)">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{currentModal?.title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cancel()"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>{{currentModal?.question}}</p>
+            </div>
+
+            <div class="modal-footer">
+                <button (click)="cancel()" type="button" class="btn btn-secondary">{{currentModal?.cancelMessage}}</button>
+                <button (click)="confirm()" type="button" class="btn btn-primary">{{currentModal?.confirmMessage}}</button>
+            </div>
+        </div>
+    </div>
 </div>

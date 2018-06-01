@@ -11,8 +11,9 @@ import { IConfirmationModal } from 'app/models/confirmation-modal.model';
 })
 export class ConfirmationModalComponent implements OnInit {
 
-    showModal = false;
     currentModal: IConfirmationModal;
+    visible = false;
+    visibleAnimate = false;
 
     constructor(
         private _ui: UiService
@@ -20,18 +21,23 @@ export class ConfirmationModalComponent implements OnInit {
 
     ngOnInit() {
         this._ui.getModal().subscribe((data) => {
-            this.showModal = true;
+            this.visible = true;
             this.currentModal = data;
+            setTimeout(() => this.visibleAnimate = true, 100);
         });
     }
 
     cancel() {
-        this.showModal = false;
+        this.visible = false;
         if (this.currentModal.cancel) this.currentModal.cancel();
     }
 
     confirm() {
-        this.showModal = false;
+        this.visible = false;
         if (this.currentModal.confirm) this.currentModal.confirm();
+    }
+
+    public onContainerClicked(event: MouseEvent): void {
+        if ((<HTMLElement>event.target).classList.contains('modal')) this.cancel();
     }
 }

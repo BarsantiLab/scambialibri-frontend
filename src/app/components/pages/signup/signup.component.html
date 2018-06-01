@@ -20,9 +20,11 @@
             </div>
 
             <div class="input-container input-container--blank">
-                <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" formControlName="privacy" required>
-                <label for="privacy-policy">Acconsento l'<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dai personali.</label>
-                <span class="error" *ngIf="!signupForm.get('privacy').invalid && signupForm.get('privacy').touched">È necessario accettare l'Informativa sulla Privacy per continuare!</span>
+                <label for="privacy-policy">
+                    <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" formControlName="privacy" required>
+                    Acconsento l'<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dai personali.
+                </label>
+                <span class="error" *ngIf="signupForm.get('privacy').invalid && signupForm.get('privacy').touched">È necessario accettare l'Informativa sulla Privacy per continuare!</span>
             </div>
 
             <button [disabled]="signupForm.touched && !signupForm.valid">Registrati</button>

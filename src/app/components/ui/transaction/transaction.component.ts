@@ -11,7 +11,6 @@ import { UiService } from 'app/services/ui.service';
     styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
-    // TODO: remove outline to send message button
     // IMPROVE: add date to message
     // TODO: fix TransactionStatus enum problem
 
