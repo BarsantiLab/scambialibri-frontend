@@ -17,12 +17,9 @@ done
 set -- "${POSITIONAL[@]}"
 
 DATE=$(date +"%Y-%m-%d_%H_%M")
-# DATE="YAY"
 NAME="scambialibri-frontend-${ENVIRONMENT}-${DATE}.tar.gz"
 SSH_KEY="~/.ssh/id_rsa_personal"
 WORK_DIR=`mktemp -d`
-
-echo "Temp dir: ${WORK_DIR}"
 
 case "$ENVIRONMENT" in
     qa) REMOTE_DIR="dev-frontend" ;;
@@ -32,7 +29,7 @@ esac
 
 rm -rf dist
 ng build -e=$ENVIRONMENT --verbose
-tar czf $WORK_DIR/scambialibri-frontend-$ENVIRONMENT-$DATE.tar.gz dist/
+tar czf $WORK_DIR/$NAME dist/
 scp -i $SSH_KEY $WORK_DIR/$NAME deploy@loscambialibri.it:~/$REMOTE_DIR/releases/$NAME
 ssh deploy@loscambialibri.it -i $SSH_KEY -t "cd ~/${REMOTE_DIR}/ && rm -rf dist && tar xzf ./releases/${NAME}"
 rm -rf $WORK_DIR

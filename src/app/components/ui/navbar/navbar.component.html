@@ -2,7 +2,7 @@
     <div class="container">
         <div class="d-flex">
             <!-- Logo -->
-            <a href="/" class="header-brand">ScambiaLibri</a>
+            <a href="/" class="header-brand">LoScambiaLibri.it</a>
 
             <!-- Account -->
             <div class="d-flex order-lg-2 ml-auto">
@@ -41,7 +41,7 @@
             </div>
 
             <!-- Toggler -->
-            <a class="header-toggler d-lg-none ml-3 ml-lg-0" href="#" data-toggle="collapse" data-target="#headerMenuCollapse">
+            <a class="header-toggler d-lg-none ml-3 ml-lg-0" (click)="isExpanded = !isExpanded" [attr.aria-expanded]="!isExpanded">
                 <span class="header-toggler-icon"></span>
             </a>
         </div>
@@ -49,7 +49,7 @@
 </div>
 
 <!-- Header menu -->
-<div class="header collapse d-lg-flex p-0">
+<div class="header collapse d-lg-flex p-0" [ngClass]="{ 'show': isExpanded }">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg order-lg-first">
@@ -57,12 +57,14 @@
 
                     <!-- Books menu -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-toggle="dropdown">
-                            <i class="fe fe-book-open"></i> Libri
-                            <div class="dropdown-menu dropdown-menu-arrow">
-                                <a routerLink="/books/to-sell" routerLinkActive="selected" class="dropdown-item">Da acquistare</a>
-                                <a routerLink="/books/to-buy" routerLinkActive="selected" class="dropdown-item">Da vendere</a>
-                            </div>
+                        <a routerLink="/books/to-sell" class="nav-link" data-toggle="dropdown">
+                            <i class="fe fe-book-open"></i> Da acquistare
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a routerLink="/books/to-buy" class="nav-link" data-toggle="dropdown">
+                            <i class="fe fe-book-open"></i> Da vendere
                         </a>
                     </li>
 
