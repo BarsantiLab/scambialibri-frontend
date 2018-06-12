@@ -1,3 +1,4 @@
+<forgot-password-modal></forgot-password-modal>
 <div class="form-container">
     <div class="form-wrapper">
         <h1>LoScambialibri.it</h1>
@@ -15,6 +16,7 @@
             </div>
 
             <button [disabled]="loginForm.touched && !loginForm.valid">Login</button>
+            <a href="javascript:void(0)" (click)="showForgotPasswordModal()">Password dimenticata? Clicca qui!</a>
             <a routerLink="/signup">Non sei registrato? Iscriviti ora!</a>
         </form>
     </div>

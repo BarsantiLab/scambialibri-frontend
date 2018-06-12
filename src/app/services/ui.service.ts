@@ -5,11 +5,13 @@ import { Subject } from 'rxjs/Subject';
 
 import { AlertType, IAlert } from 'app/models/alert.model';
 import { IConfirmationModal } from 'app/models/confirmation-modal.model';
+import { IForgotPasswordModal } from 'app/models/forgot-password-modal.model';
 
 @Injectable()
 export class UiService {
     private _alertSubject = new Subject<IAlert>();
     private _confirmationModalSubject = new Subject<IConfirmationModal>();
+    private _forgotPasswordModalSubject = new Subject<IForgotPasswordModal>();
 
     constructor() { }
 
@@ -17,8 +19,12 @@ export class UiService {
         return this._alertSubject.asObservable();
     }
 
-    getModal(): Observable<any> {
+    getConfirmationModal(): Observable<any> {
         return this._confirmationModalSubject.asObservable();
+    }
+
+    getForgotPasswordModal(): Observable<any> {
+        return this._forgotPasswordModalSubject.asObservable();
     }
 
     alert(type: AlertType, message: string, permanent: boolean = false) {
@@ -27,5 +33,9 @@ export class UiService {
 
     showConfirmationModal(config: IConfirmationModal) {
         this._confirmationModalSubject.next(config);
+    }
+
+    showForgotPasswordModal(config: IForgotPasswordModal) {
+        this._forgotPasswordModalSubject.next(config);
     }
 }

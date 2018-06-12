@@ -30,6 +30,7 @@ import { AlertComponent } from './components/ui/alert/alert.component';
 import { BookTableComponent } from './components/ui/book-table/book-table.component';
 import { NavbarComponent } from './components/ui/navbar/navbar.component';
 import { NewBookComponent } from './components/ui/new-book/new-book.component';
+import { TransactionComponent } from './components/ui/transaction/transaction.component';
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
@@ -37,15 +38,16 @@ import { TransactionStatusPipe } from './pipes/transaction-status.pipe';
 
 import { PurchasesReportComponent } from './components/pages/books/purchases-report/purchases-report.component';
 import { SalesReportComponent } from './components/pages/books/sales-report/sales-report.component';
+import { ForgotPasswordComponent } from './components/pages/forgot-password/forgot-password.component';
 import { OnboardingComponent } from './components/pages/onboarding/onboarding.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
-import { TransactionComponent } from './components/ui/transaction/transaction.component';
 
 import { OcticonDirective } from './directives/octicon.directive';
 
 import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
 
 import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
+import { ForgotPasswordModalComponent } from './components/ui/forgot-password-modal/forgot-password-modal.component';
 
 @NgModule({
     declarations: [
@@ -74,7 +76,11 @@ import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privac
 
         ConfirmationModalComponent,
 
-        PrivacyPolicyComponent
+        PrivacyPolicyComponent,
+
+        ForgotPasswordModalComponent,
+
+        ForgotPasswordComponent
     ],
 
     imports: [

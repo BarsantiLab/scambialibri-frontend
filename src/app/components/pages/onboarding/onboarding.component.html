@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form class="card mt-6">
+            <form class="card mt-6" #onboardingForm="ngForm">
                 <div class="card-header">
                     <h1 class="card-title">Benvenuto su LoScambialibri.it!</h1>
                 </div>
@@ -102,88 +102,3 @@
         </div>
     </div>
 </div>
-<!-- 
-<div class="onboarding-wrapper">
-    <h1>Benvenuto su Scambialibri.it!</h1>
-    <h2>Completa la procedura per confermare il tuo account</h2>
-    <form #onboardingForm="ngForm">
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Nome</label>
-                <input type="text" [(ngModel)]="onboardingModel.firstName" required name="firstName">
-            </div>
-            <div class="input-container">
-                <label>Cognome</label>
-                <input type="text" [(ngModel)]="onboardingModel.lastName" required name="lastName">
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Telefono/cellulare</label>
-                <input type="text" [(ngModel)]="onboardingModel.phone" required name="phone">
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Indirizzo</label>
-                <input type="text" [(ngModel)]="onboardingModel.address" required name="address">
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Città</label>
-                <input type="text" [(ngModel)]="onboardingModel.city" required name="city">
-            </div>
-            <div class="input-container">
-                <label>CAP</label>
-                <input type="text" [(ngModel)]="onboardingModel.zipCode" required name="zipCode">
-            </div>
-            <div class="input-container">
-                <label>Provincia</label>
-                <input type="text" [(ngModel)]="onboardingModel.province" required name="province">
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Scuola</label>
-                <select [(ngModel)]="school" required name="school" (ngModelChange)="onSelectSchool()">
-                    <option *ngFor="let s of schools" [ngValue]="s">{{s.name}}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Specializzazione</label>
-                <select [(ngModel)]="specialization" required name="specialization" [disabled]="!school" (ngModelChange)="onSelectSpecialization()">
-                    <option *ngFor="let s of specializations" [ngValue]="s">{{s.name}}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <div class="input-container">
-                <label>Classe</label>
-                <select [(ngModel)]="grade" required name="grade" [disabled]="!specialization">
-                    <option *ngFor="let g of grades" [ngValue]="g">{{g.year}}{{g.section}}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="fieldset center">
-            <div class="input-container">
-                <button (click)="submitOnboarding()">Completa l'account</button>
-            </div>
-        </div>
-
-        <div class="fieldset center" *ngIf="showError">
-            <div class="input-container">
-                <p class="error">Riempi tutti i campi per poter completare l'account!</p>
-            </div>
-        </div>
-    </form>
-</div> -->
