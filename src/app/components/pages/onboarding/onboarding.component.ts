@@ -29,6 +29,8 @@ export class OnboardingComponent implements OnInit {
     specialization: ISpecialization;
     grade: IGrade;
 
+    privacy: boolean;
+
     schools: ISchool[];
     specializations: ISpecialization[];
     grades: IGrade[];
@@ -68,6 +70,8 @@ export class OnboardingComponent implements OnInit {
 
     async submitOnboarding() {
         this.showError = false;
+
+        // TODO: check for privacy policy
 
         if (!this.onboardingForm.valid) {
             this.showError = true;

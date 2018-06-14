@@ -2,7 +2,10 @@
     <div class="container">
         <div class="d-flex">
             <!-- Logo -->
-            <a href="/" class="header-brand">LoScambiaLibri.it</a>
+            <a href="/" class="header-brand">
+                <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                LoScambiaLibri.it
+            </a>
 
             <!-- Account -->
             <div class="d-flex order-lg-2 ml-auto">
@@ -26,11 +29,16 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a href="#" class="dropdown-item">
+                        <!-- <a href="#" class="dropdown-item">
                             <i class="dropdown-icon fe fe-user"></i> Profilo
                         </a>
                         <a href="#" class="dropdown-item">
                             <i class="dropdown-icon fe fe-settings"></i> Account
+                        </a> -->
+                        <a class="dropdown-item">
+                            Funzionalità in fase di sviluppo,<br />
+                            per ogni modifica al profilo contattare<br />
+                            <a href="mailto:info@loscambialibri.it" target="_blank">info@loscambialibri.it</a>.
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item" (click)="logout()">
@@ -58,13 +66,13 @@
                     <!-- Books menu -->
                     <li class="nav-item">
                         <a routerLink="/books/to-sell" class="nav-link" data-toggle="dropdown">
-                            <i class="fe fe-book-open"></i> Da acquistare
+                            <i class="fe fe-book-open"></i> Da vendere
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a routerLink="/books/to-buy" class="nav-link" data-toggle="dropdown">
-                            <i class="fe fe-book-open"></i> Da vendere
+                            <i class="fe fe-book-open"></i> Da acquistare
                         </a>
                     </li>
 
