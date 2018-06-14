@@ -1,6 +1,6 @@
 <div class="form-container">
     <div class="form-wrapper">
-        <h1>Scambialibri</h1>
+        <h1>LoScambialibri.it</h1>
         <h2>Registrati ed entra nell'applicazione</h2>
 
         <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
@@ -22,7 +22,7 @@
             <div class="input-container input-container--blank">
                 <label for="privacy-policy">
                     <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" formControlName="privacy" required>
-                    Acconsento l'<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dai personali.
+                    Acconsento l'<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dati personali.
                 </label>
                 <span class="error" *ngIf="signupForm.get('privacy').invalid && signupForm.get('privacy').touched">È necessario accettare l'Informativa sulla Privacy per continuare!</span>
             </div>
