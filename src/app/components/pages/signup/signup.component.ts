@@ -47,8 +47,11 @@ export class SignupComponent implements OnInit {
         try {
             this.loading = true;
             await this._auth.signup(this.mail, this.password);
-            // TODO: provide further instructions
-            this._ui.alert(AlertType.Success, 'Iscrizione effettuata con successo!');
+
+            this._ui.alert(AlertType.Success,
+                '<b>Iscrizione effettuata con successo!</b><br>Verifica la tua casella l\'e-mail per accedere all\'onboarding',
+                true
+            );
         } catch (err) {
             // TODO: creare error handler
             if (err.status === 400) {
