@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +20,7 @@ import { CanActivateOnboarding } from './services/can-activate/onboarding.servic
 import { CanActivateUser } from './services/can-activate/user.service';
 
 import { BookService } from './services/api/book.service';
+import { OfferService } from './services/api/offer.service';
 import { SchoolService } from './services/api/school.service';
 import { TransactionService } from './services/api/transaction.service';
 import { UserService } from './services/api/user.service';
@@ -99,7 +100,8 @@ import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privac
         BookService,
         UserService,
         SchoolService,
-        TransactionService
+        TransactionService,
+        OfferService
     ],
 
     bootstrap: [AppComponent]

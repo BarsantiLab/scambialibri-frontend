@@ -4,7 +4,7 @@ import { ConfigService } from 'app/services/config.service';
 import { HttpService } from 'app/services/http.service';
 
 import { BookStatus, IBook } from 'app/models/book.model';
-import { OfferType } from 'app/models/offer.model';
+import { IOffer, OfferType } from 'app/models/offer.model';
 
 @Injectable()
 export class OfferService {
@@ -22,7 +22,12 @@ export class OfferService {
             bookStatus
         });
 
-        // TODO: convert to IOffer
-        return await response.json() as any;
+        return await response.json() as IOffer;
+    }
+
+    async cancelOffer(offer: IOffer) {
+        const url = `${this._config.API.url}/offer/${offer.id}`;
+        const response = await this._http.delete(url);
+        return await response.json();
     }
 }

@@ -1,4 +1,4 @@
-import { ITransaction } from 'app/models/transaction.model';
+import { IOffer } from 'app/models/offer.model';
 
 export interface IBook {
     id: number;
@@ -8,7 +8,7 @@ export interface IBook {
     price: number;
     author: string;
 
-    transaction?: ITransaction;
+    offer?: IOffer;
 }
 
 export enum BookStatus {
