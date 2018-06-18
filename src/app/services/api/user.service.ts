@@ -41,4 +41,16 @@ export class UserService {
         const response = await this._http.get(url);
         return await response.json() as IGrade;
     }
+
+    async recoverPassword(mail: string) {
+        const url = `${this._config.API.url}/user/forgot-password`;
+        const response = await this._http.post(url, { mail });
+        return await response.json();
+    }
+
+    async sendNewPassword(token: string, password: string) {
+        const url = `${this._config.API.url}/user/set-password`;
+        const response = await this._http.post(url, { token, password });
+        return await response.json();
+    }
 }

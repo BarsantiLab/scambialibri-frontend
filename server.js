@@ -1,6 +1,5 @@
 let express = require('express');
 let path = require('path');
-let http = require('http');
 
 let app = express();
 let argv = require('minimist')(process.argv.slice(2));

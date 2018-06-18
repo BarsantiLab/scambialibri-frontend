@@ -1,6 +1,7 @@
+<forgot-password-modal></forgot-password-modal>
 <div class="form-container">
     <div class="form-wrapper">
-        <h1>Scambialibri</h1>
+        <h1>LoScambialibri.it</h1>
         <h2>Entra con le tue credenziali</h2>
 
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
@@ -15,6 +16,7 @@
             </div>
 
             <button [disabled]="loginForm.touched && !loginForm.valid">Login</button>
+            <a href="javascript:void(0)" (click)="showForgotPasswordModal()">Password dimenticata? Clicca qui!</a>
             <a routerLink="/signup">Non sei registrato? Iscriviti ora!</a>
         </form>
     </div>

@@ -20,16 +20,6 @@ export class OnboardingComponent implements OnInit {
 
     @ViewChild('onboardingForm') onboardingForm;
 
-    // onboardingModel: any = {
-    //     firstName: 'Davide',
-    //     lastName: 'Rossetto',
-    //     phone: '3483258988',
-    //     address: 'Via Spellatteria Alta 24/B',
-    //     city: 'Trebaseleghe',
-    //     zipCode: '35010',
-    //     province: 'PD'
-    // };
-
     onboardingModel: any = {};
 
     token: string;
@@ -38,6 +28,8 @@ export class OnboardingComponent implements OnInit {
     school: ISchool;
     specialization: ISpecialization;
     grade: IGrade;
+
+    privacy: boolean;
 
     schools: ISchool[];
     specializations: ISpecialization[];
@@ -78,6 +70,8 @@ export class OnboardingComponent implements OnInit {
 
     async submitOnboarding() {
         this.showError = false;
+
+        // TODO: check for privacy policy
 
         if (!this.onboardingForm.valid) {
             this.showError = true;
