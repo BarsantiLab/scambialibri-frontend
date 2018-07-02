@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TransactionService } from 'app/services/api/transaction.service';
+import { OfferService } from 'app/services/api/offer.service';
 
 @Component({
     selector: 'app-purchases-report',
@@ -12,10 +12,10 @@ export class PurchasesReportComponent implements OnInit {
     transactions: any[] = [];
 
     constructor(
-        private _transaction: TransactionService
+        private _offerService: OfferService
     ) { }
 
     async ngOnInit() {
-        this.transactions = await this._transaction.getPurchases();
+        this.transactions = await this._offerService.getPurchases();
     }
 }

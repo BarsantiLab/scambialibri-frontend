@@ -54,7 +54,7 @@
                     </label>
                     <span *ngIf="lockStatus">Sì</span>
                 </td>
-                <td><button [ngClass]="{'btn-primary': !book.offer.id, 'btn-danger': book.offer.id}" class="btn btn-sm" [disabled]="type.toString() === 'sell' && !book.offer.bookStatus" (click)="buttonClicked(book)">{{ book.offer.id ? altButtonLabel : buttonLabel}}</button></td>
+                <td><button [ngClass]="{'btn-primary': !book.offer.id, 'btn-danger': book.offer.id}" class="btn btn-sm" [disabled]="(type.toString() === 'sell' && !book.offer.bookStatus) || book.offerLocked" (click)="buttonClicked(book)">{{ book.offer.id ? altButtonLabel : buttonLabel}}</button></td>
             </tr>
         </tbody>
     </table>

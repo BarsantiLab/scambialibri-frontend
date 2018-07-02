@@ -30,4 +30,16 @@ export class OfferService {
         const response = await this._http.delete(url);
         return await response.json();
     }
+
+    async getPurchases() {
+        const url = `${this._config.API.url}/offer/purchases`;
+        const response = await this._http.get(url);
+        return response.json();
+    }
+
+    async getSales() {
+        const url = `${this._config.API.url}/offer/sales`;
+        const response = await this._http.get(url);
+        return response.json();
+    }
 }
