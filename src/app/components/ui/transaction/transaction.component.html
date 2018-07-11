@@ -62,9 +62,9 @@
                     <a [href]="'mailto:' + data.pairedUser.mail">{{data.pairedUser.mail}}</a>
                 </div>
 
-                <div class="col">
+                <!-- <div class="col">
                     {{data.pairedUser.address}}, {{data.pairedUser.city}} ({{data.pairedUser.province}})
-                </div>
+                </div> -->
             </div>
 
             <div class="row mb-2">
@@ -98,7 +98,12 @@
 
             <div class="row" *ngFor="let message of data.messages; last as isLast" [ngClass]="{ 'justify-content-end': message.sent, 'mb-2': !isLast }">
                 <div class="col col-chat bg-white border rounded-chat p-3">
-                    {{message.content}}
+                    <div class="row col m-0 p-0">
+                        {{message.content}}
+                    </div>
+                    <div class="row col m-0 p-0 d-flex flex-row-reverse">
+                        <span class="font-weight-light text-black-50"><small>{{message.date | chatDate }}</small></span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -35,6 +35,7 @@ import { TransactionComponent } from './components/ui/transaction/transaction.co
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
+import { ChatDatePipe } from './pipes/chat-date.pipe';
 import { TransactionStatusPipe } from './pipes/transaction-status.pipe';
 
 import { PurchasesReportComponent } from './components/pages/books/purchases-report/purchases-report.component';
@@ -48,6 +49,7 @@ import { OcticonDirective } from './directives/octicon.directive';
 import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
 
 import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './components/pages/terms-and-conditions/terms-and-conditions.component';
 import { ForgotPasswordModalComponent } from './components/ui/forgot-password-modal/forgot-password-modal.component';
 
 @NgModule({
@@ -62,6 +64,7 @@ import { ForgotPasswordModalComponent } from './components/ui/forgot-password-mo
 
         BookStatusPipe,
         BookPipe,
+        ChatDatePipe,
         TransactionStatusPipe,
 
         BookTableComponent,
@@ -78,10 +81,10 @@ import { ForgotPasswordModalComponent } from './components/ui/forgot-password-mo
         ConfirmationModalComponent,
 
         PrivacyPolicyComponent,
+        TermsAndConditionsComponent,
 
         ForgotPasswordModalComponent,
-
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
     ],
 
     imports: [

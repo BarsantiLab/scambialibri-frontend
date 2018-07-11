@@ -19,12 +19,19 @@
                 <span class="error" *ngIf="signupForm.get('repeatPassword').invalid && signupForm.get('repeatPassword').touched || password !== repeatPassword">Inserisci la password inserita sopra!</span>
             </div>
 
+            <div class="input-container input-container--blank input-container--no-bottom">
+                <label for="terms">
+                    <input type="checkbox" id="terms" [(ngModel)]="terms" formControlName="terms" required>
+                    Accetto le <a class="link--inline" href="/terms-and-conditions" target="_blank">Condizioni di utilizzo</a> dell'applicazione.
+                </label>
+                <span class="error" *ngIf="signupForm.get('terms').invalid && signupForm.get('terms').touched"><br />È necessario accettare le condizioni di utilizzo per continuare!</span>
+            </div>
             <div class="input-container input-container--blank">
                 <label for="privacy-policy">
                     <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" formControlName="privacy" required>
-                    Acconsento l'<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dati personali.
+                    Ho letto, compreso e accetto l’<a class="link--inline" href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> e presto il mio consenso all’utilizzo dei miei dati.
                 </label>
-                <span class="error" *ngIf="signupForm.get('privacy').invalid && signupForm.get('privacy').touched">È necessario accettare l'Informativa sulla Privacy per continuare!</span>
+                <span class="error" *ngIf="signupForm.get('privacy').invalid && signupForm.get('privacy').touched"><br />È necessario accettare l'Informativa sulla Privacy per continuare!</span>
             </div>
 
             <button [disabled]="signupForm.touched && !signupForm.valid">Registrati</button>

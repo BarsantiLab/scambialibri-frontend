@@ -30,10 +30,13 @@ export class OnboardingComponent implements OnInit {
     grade: IGrade;
 
     privacy: boolean;
+    terms: boolean;
 
     schools: ISchool[];
     specializations: ISpecialization[];
     grades: IGrade[];
+
+    showTickError = false;
 
     constructor(
         private _route: ActivatedRoute,
@@ -70,8 +73,12 @@ export class OnboardingComponent implements OnInit {
 
     async submitOnboarding() {
         this.showError = false;
+        this.showTickError = false;
 
-        // TODO: check for privacy policy
+        if (!this.privacy || !this.terms) {
+            this.showTickError = true;
+            return;
+        }
 
         if (!this.onboardingForm.valid) {
             this.showError = true;
