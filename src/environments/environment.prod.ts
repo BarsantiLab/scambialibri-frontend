@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
     api: {
-        url: 'http://loscambialibri.it:21000',
+        url: 'http://api.loscambialibri.it',
         v: 'v1'
     }
 };
