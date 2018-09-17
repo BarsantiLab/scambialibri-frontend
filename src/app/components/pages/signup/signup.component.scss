@@ -128,4 +128,23 @@ $gutter: 25px;
             }
         }
     }
+
+    @media (max-width: 767.98px) {
+        .form-container {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        overflow: scroll;
+
+        .form-container .form-wrapper {
+            position: initial;
+            top: 0;
+            left: 0;
+            transform: none;
+            padding: $gutter;
+        }
+    }
 }

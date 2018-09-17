@@ -1,56 +1,37 @@
-// @import "~styles/variables.scss";
+.book-table__legend {
+    label.book-table__description {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
 
+    span.book-table__text {
+        font-size: 1.25em;
+        font-weight: bold;
+    }
 
-// .filter {
-//     width: 100%;
-// }
+    button {
+        width: 100%;
+    }
 
-// .filter {
-//     width: 100%;
-//     display: flex;
+    @media (min-width: 991.98px) {
+        button {
+            max-width: 150px;
+        }
+    }
 
-//     input, select {
-//         flex: 1;
-//     }
+    @media (max-width: 991.98px) {
+        .book-table__book-list {
+            background-color: transparent;
+            box-shadow: none;
+            border: 0;
 
-//     input {
-//         margin-right: $gutter;
-//     }
-// }
-
-// table {
-//     font-size: 14px;
-//     width: 100%;
-//     font-weight: 300;
-//     border-collapse: collapse;
-//     margin-top: 15px;
-//     border: 1px solid #ddd;
-
-//     td, th {
-//         padding: 15px;
-//         background-color: #fff;
-//         border-bottom: 1px solid #ddd;
-
-//         &.no-books {
-//             text-align: center;
-//         }
-//     }
-
-//     &.no-books {
-//         text-align: center;
-//     }
-
-//     select {
-//         min-width: 200px;
-//         padding: 5px;
-//     }
-
-//     button {
-//         width: 75px;
-//     }
-// }
-
-//     tr:nth-child(odd) td {
-//         background-color: lighten($accent, 58%);
-//     }
-// }
+            .book-list__book-item {
+                background-color: white;
+                margin-bottom: 20px;
+                border: 1px solid rgba(#002864, .12);
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+}
