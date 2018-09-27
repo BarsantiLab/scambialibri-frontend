@@ -1,28 +1,71 @@
-# Frontend
+# Scambialibri - API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+**Scambialibri** è una piattaforma Web per la compravendita di libri scolastici trasversalmente all'istituto di appartenenza, mettendo in comunicazione i venditori con gli eventuali compratori.
 
-## Development server
+### Prerequisiti
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Per poter girare correttamente ha bisogno dei seguenti software:
 
-## Code scaffolding
+- Node.js v8+
+- `angular-cli` v6+
+- Shell bash (per lo script di deploy, non fondamentale)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+### Installazione
 
-## Build
+Per installare il progetto si può usare il seguente script:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```sh
+git clone git@github.com:BarsantiLab/scambialibri-frontend.git
+cd scambialibri-frontend
+npm install
+```
 
-## Running unit tests
+Una volta installati i pacchetti il frontend è pronto per essere avviato.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Avvio
 
-## Running end-to-end tests
+Per avviare il progetto sulla macchina locale è sufficiente lanciare questo comando:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+```
+npm start
+```
 
-## Further help
+Verranno compilati i file e il frontend verrà servito all'indirizzo `http://localhost:8080`. Per modificare le impostazioni riguardo il tool di compilazione consultare il file [`.angular-cli.json`](.angular-cli.json), mentre per le impostazioni del frontend vedere i file dentro la cartella [`environments`](/src/environments).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Deploy
+
+Per il deploy al momento viene utilizzato un semplice script bash ([`build.sh`](/build.sh)) che compila i sorgenti, crea un archivio compresso con l'output e in base all'environment specificato carica su diverse directory remote tramite `scp`. Dopo aver caricato l'archivio invia un comando via `ssh` per decomprimere l'archivio caricato. A differenza del backend non è necessario riavviare il processo con `pm2` perché verrà caricata soltanto la parte statica.
+
+Per adattarlo alle proprie macchine cambiare le righe 33 e 34 cambiando l'URL, eventualmente l'utente e la path sulla quale vengono caricati gli archivi.
+
+Questo è solo una misura temporanea, in futuro verrà attivato [CircleCI](https://circleci.com/) per le operazioni ci Continuous Integration e Continuous Delivery (vedi [Progetti futuri](#progetti-futuri)).
+
+## Progetti futuri
+
+Questa è una lista delle modifiche future che verranno implementate man mano lato frontend. Non sono in ordine temporale, né di importanza.
+
+- [ ] Integrazione con [CircleCI](https://circleci.com/) per continuous integration/delivery e [CodeClimate](https://codeclimate.com/) per la quality assurance.
+- [ ] Creazione di un container Docker (trasversale a tutti i progetti LoScambialibri.it).
+- [ ] Integrazione di unit testing per le API.
+- [ ] Integrazione di un client MQTT per la chat real-time.
+- [ ] Integrazione automatica di una strategia di [SemVer](https://semver.org/).
+- [ ] Integrazione di stategie di localizzazione e internaziolizzazione, comprendente la traduzione completa del frontend.
+
+## Contributori cercasi!
+
+LoScambialibri.it è sempre in cerca di menti che si uniscano nel progetto, in modo di condividere le proprie conoscenze e mettersi a confronto con altri colleghi!
+
+Per avere maggiori informazioni consulta [CONTRIBUTING.md](/CONTRIBUTING.md) e leggi su come fare la tua parte!
+
+## Progetti di LoScambialibri.it
+
+- [`scambialibri-api`](https://github.com/BarsantiLab/scambialibri-api): server REST che fornisce le API per questo frontend.
+
+## Autori
+
+* **Davide Rossetto** - *Reviewer and first maintainer* - [DavideRoss](https://github.com/DavideRoss)
+* **Marco Rubin** - *Presidente di LoScambialibri.it e tester*
+
+## Licenza
+
+Il progetto è coperto dalla licenza MIT - vedere la [LICENSE](LICENSE) per i dettagli.
