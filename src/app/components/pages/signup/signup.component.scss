@@ -47,10 +47,14 @@ $gutter: 25px;
                     border: 0;
                 }
 
+                &.input-container--no-bottom {
+                    margin-bottom: 0;
+                }
+
                 span.error {
-                    position: absolute;
-                    top: calc(100% + 3px);
-                    left: 0;
+                    // position: absolute;
+                    // top: calc(100% + 3px);
+                    // left: 0;
                     color: #FF5D5D;
                     font-size: 14px;
                     font-weight: 100;
@@ -122,6 +126,25 @@ $gutter: 25px;
                     display: inline;
                 }
             }
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .form-container {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        overflow: scroll;
+
+        .form-container .form-wrapper {
+            position: initial;
+            top: 0;
+            left: 0;
+            transform: none;
+            padding: $gutter;
         }
     }
 }

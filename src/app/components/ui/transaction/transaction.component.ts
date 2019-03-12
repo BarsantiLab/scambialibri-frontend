@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ITransaction, TransactionStatus } from 'app/models/transaction.model';
+import { AlertType } from 'app/models/alert.model';
+import { IOffer } from 'app/models/offer.model';
+import { ITransaction } from 'app/models/transaction.model';
 
 import { TransactionService } from 'app/services/api/transaction.service';
 import { UiService } from 'app/services/ui.service';
@@ -25,23 +27,24 @@ export class TransactionComponent implements OnInit {
 
     ngOnInit() { }
 
-    async pairTransaction(trans1: ITransaction, trans2: ITransaction) {
+    async createTransaction(buyerOffer: IOffer, sellerOffer: IOffer) {
         this._ui.showConfirmationModal({
             title: 'Contatta utente',
             question: 'Sei sicuro di contattare questo utente?',
             confirmMessage: 'Sì',
             cancelMessage: 'No',
             confirm: async () => {
-                const out = await this._transaction.pairTransaction(trans1, trans2);
+                const out = await this._transaction.createTransaction(buyerOffer, sellerOffer);
                 this.data.status = 'pending';
-                this.data.pairedUser = out.pairedUser;
+                this.data.pairedUser = out.seller;
+                this.data.transaction = out.transaction;
                 this.data.messages = [];
             }
         });
     }
 
     async sendMessage() {
-        await this._transaction.sendMessage(this.data as ITransaction, this.messageText);
+        await this._transaction.sendMessage(this.data.transaction as ITransaction, this.messageText);
 
         this.data.messages.push({
             sent: true,
@@ -62,7 +65,7 @@ export class TransactionComponent implements OnInit {
             confirmMessage: 'Sì',
             cancelMessage: 'No',
             confirm: async () => {
-                const out = await this._transaction.cancelTransaction(this.data as ITransaction);
+                const out = await this._transaction.cancelTransaction(this.data.transaction as ITransaction);
                 this.data.status = 'free';
                 this.data.sales = out.sales;
             }
@@ -76,8 +79,9 @@ export class TransactionComponent implements OnInit {
             confirmMessage: 'Sì',
             cancelMessage: 'No',
             confirm: async () => {
-                await this._transaction.reportNotResponding(this.data as ITransaction);
+                await this._transaction.reportNotResponding(this.data.transaction as ITransaction);
                 this.data.status = 'notResponding';
+                this._ui.alert(AlertType.Success, 'La transazione è stata segnata come "Non risponde". Se l\'utente non risponderà entro 24h la transazione verrà chiusa automaticamente');
             }
         });
     }
@@ -89,8 +93,16 @@ export class TransactionComponent implements OnInit {
             confirmMessage: 'Sì',
             cancelMessage: 'No',
             confirm: async () => {
-                await this._transaction.reportCompleted(this.data as ITransaction);
-                this.data.status = 'inCompletion';
+                const data: any = await this._transaction.reportCompleted(this.data.transaction as ITransaction);
+
+                if (data.isFullyComplete) {
+                    this.data.status = 'completed';
+                    this._ui.alert(AlertType.Success, 'La transazione è stata completata con successo!');
+                } else {
+                    this.data.status = 'inCompletion';
+                    this.data.transaction.isFirstComplete = true;
+                    this._ui.alert(AlertType.Success, 'La transazione è stata segnata come "In completamento". Se l\'utente marcherà la transazione come completata (opppure in 24h) verrà chiusa definitivamente.');
+                }
             }
         });
     }

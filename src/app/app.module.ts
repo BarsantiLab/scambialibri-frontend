@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +20,7 @@ import { CanActivateOnboarding } from './services/can-activate/onboarding.servic
 import { CanActivateUser } from './services/can-activate/user.service';
 
 import { BookService } from './services/api/book.service';
+import { OfferService } from './services/api/offer.service';
 import { SchoolService } from './services/api/school.service';
 import { TransactionService } from './services/api/transaction.service';
 import { UserService } from './services/api/user.service';
@@ -34,6 +35,7 @@ import { TransactionComponent } from './components/ui/transaction/transaction.co
 
 import { BookStatusPipe } from './pipes/book-status.pipe';
 import { BookPipe } from './pipes/book.pipe';
+import { ChatDatePipe } from './pipes/chat-date.pipe';
 import { TransactionStatusPipe } from './pipes/transaction-status.pipe';
 
 import { PurchasesReportComponent } from './components/pages/books/purchases-report/purchases-report.component';
@@ -47,6 +49,7 @@ import { OcticonDirective } from './directives/octicon.directive';
 import { ConfirmationModalComponent } from './components/ui/confirmation-modal/confirmation-modal.component';
 
 import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './components/pages/terms-and-conditions/terms-and-conditions.component';
 import { ForgotPasswordModalComponent } from './components/ui/forgot-password-modal/forgot-password-modal.component';
 
 @NgModule({
@@ -61,6 +64,7 @@ import { ForgotPasswordModalComponent } from './components/ui/forgot-password-mo
 
         BookStatusPipe,
         BookPipe,
+        ChatDatePipe,
         TransactionStatusPipe,
 
         BookTableComponent,
@@ -77,10 +81,10 @@ import { ForgotPasswordModalComponent } from './components/ui/forgot-password-mo
         ConfirmationModalComponent,
 
         PrivacyPolicyComponent,
+        TermsAndConditionsComponent,
 
         ForgotPasswordModalComponent,
-
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
     ],
 
     imports: [
@@ -105,7 +109,8 @@ import { ForgotPasswordModalComponent } from './components/ui/forgot-password-mo
         BookService,
         UserService,
         SchoolService,
-        TransactionService
+        TransactionService,
+        OfferService
     ],
 
     bootstrap: [AppComponent]

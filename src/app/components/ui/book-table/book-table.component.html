@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="table-responsive card">
+<!-- <div class="table-responsive card">
     <table class="table table-striped table-vcenter m-0">
         <thead>
             <tr>
@@ -39,7 +39,7 @@
                 <td>{{book.title}}</td>
                 <td>{{book.isbn}}</td>
                 <td *ngIf="showStatus">
-                    <select class="custom-select" *ngIf="!lockStatus" [(ngModel)]="book.transaction.bookStatus" [disabled]="book.transaction.id">
+                    <select class="custom-select" *ngIf="!lockStatus" [(ngModel)]="book.offer.bookStatus" [disabled]="book.offer.id">
                         <option ngValue="new">Nuovo</option>
                         <option ngValue="pencilNotes">Note a matita</option>
                         <option ngValue="penNotes">Note a penna</option>
@@ -49,13 +49,63 @@
                 </td>
                 <td *ngIf="showStatus">
                     <label *ngIf="!lockStatus" class="custom-switch">
-                        <input type="checkbox" class="custom-switch-input" [(ngModel)]="book.transaction.additionalMaterial" [disabled]="book.transaction.id">
+                        <input type="checkbox" class="custom-switch-input" [(ngModel)]="book.offer.additionalMaterial" [disabled]="book.offer.id">
                         <span class="custom-switch-indicator"></span>
                     </label>
                     <span *ngIf="lockStatus">Sì</span>
                 </td>
-                <td><button [ngClass]="{'btn-primary': !book.transaction.id, 'btn-danger': book.transaction.id}" class="btn btn-sm" [disabled]="mode === 'sell' && !book.transaction.bookStatus" (click)="buttonClicked(book)">{{ book.transaction.id ? altButtonLabel : buttonLabel}}</button></td>
+                <td><button [ngClass]="{'btn-primary': !book.offer.id, 'btn-danger': book.offer.id}" class="btn btn-sm" [disabled]="(type.toString() === 'sell' && !book.offer.bookStatus) || book.offerLocked" (click)="buttonClicked(book)">{{ book.offer.id ? altButtonLabel : buttonLabel}}</button></td>
             </tr>
         </tbody>
     </table>
+</div> -->
+
+<div class="card book-table__book-list">
+    <div class="container">
+        <div class="row text-uppercase text-muted d-none d-lg-flex border-bottom">
+            <div class="col p-3 d-flex align-items-end">Autore</div>
+            <div class="col p-3 d-flex align-items-end">Titolo</div>
+            <div class="col p-3 d-flex align-items-end">ISBN</div>
+            <div class="col p-3 d-flex align-items-end" *ngIf="showStatus">Stato</div>
+            <div class="col p-3 d-flex align-items-end" *ngIf="showStatus">Mat. agg.</div>
+            <div class="col p-3 d-flex align-items-end">Azioni</div>
+        </div>
+        <div class="row m-b-3 border-bottom book-list__book-item" *ngFor="let book of books | book: searchString">
+            <div class="col-6 col-md-4 col-lg p-3 book-table__legend" [ngClass]="{}">
+                <label class="d-xl-none d-lg-none text-uppercase text-muted book-table__description">Autore</label>
+                <span>{{book.author}}</span>
+            </div>
+            <div class="col-6 col-md-4 col-lg p-3 book-table__legend">
+                <label class="d-xl-none d-lg-none text-uppercase text-muted book-table__description">Titolo</label>
+                <span>{{book.title}}</span>
+            </div>
+            <div class="col-6 col-md-4 col-lg p-3 book-table__legend">
+                <label class="d-xl-none d-lg-none text-uppercase text-muted book-table__description">ISBN</label>
+                <span>{{book.isbn}}</span>
+            </div>
+            <div class="col-6 col-md-4 col-lg p-3 book-table__legend" *ngIf="showStatus">
+                <label class="d-xl-none d-lg-none text-uppercase text-muted book-table__description">Stato</label>
+                <select class="custom-select" *ngIf="!lockStatus" [(ngModel)]="book.offer.bookStatus" [disabled]="book.offer.id">
+                    <option ngValue="new">Nuovo</option>
+                    <option ngValue="pencilNotes">Note a matita</option>
+                    <option ngValue="penNotes">Note a penna</option>
+                    <option ngValue="badConditions">Cattive condizioni</option>
+                </select>
+                <span *ngIf="lockStatus">{{ book.bookStatus | bookStatus }}</span>
+            </div>
+            <div class="col-6 col-md-4 col-lg p-3 book-table__legend" *ngIf="showStatus">
+                <label class="d-xl-none d-lg-none text-uppercase text-muted book-table__description">Mat. agg.</label>
+                <label *ngIf="!lockStatus" class="custom-switch">
+                    <input type="checkbox" class="custom-switch-input" [(ngModel)]="book.offer.additionalMaterial" [disabled]="book.offer.id">
+                    <span class="custom-switch-indicator"></span>
+                    <span class="custom-switch-description">{{book.offer.additionalMaterial ? 'Sì' : 'No'}}</span>
+                </label>
+                <span *ngIf="lockStatus">Sì</span>
+            </div>
+            <div class="col-6 col-md-4 col-lg p-3 book-table__legend">
+                <label class="d-xl-none d-lg-none text-uppercase text-muted book-table__description">Azioni</label>
+                <button [ngClass]="{'btn-primary': !book.offer.id, 'btn-danger': book.offer.id}" class="btn btn-sm" [disabled]="(type.toString() === 'sell' && !book.offer.bookStatus) || book.offerLocked" (click)="buttonClicked(book)">{{ book.offer.id ? altButtonLabel : buttonLabel}}</button>
+            </div>
+        </div>
+    </div>
 </div>

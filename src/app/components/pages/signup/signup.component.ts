@@ -13,14 +13,11 @@ import { AlertType } from 'app/models/alert.model';
 })
 export class SignupComponent implements OnInit {
 
-    // public mail = 'davide.ross93@gmail.com';
-    // public password = 'davide12';
-    // public repeatPassword = 'davide12';
-
     mail: string;
     password: string;
     repeatPassword: string;
     privacy: boolean;
+    terms: boolean;
 
     loading = false;
     signupForm: FormGroup;
@@ -36,7 +33,8 @@ export class SignupComponent implements OnInit {
             mail: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(5)]],
             repeatPassword: ['', [Validators.required, Validators.minLength(5)]],
-            privacy: ['', Validators.requiredTrue]
+            privacy: ['', Validators.requiredTrue],
+            terms: ['', Validators.requiredTrue]
         });
     }
 

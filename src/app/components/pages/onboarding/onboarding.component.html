@@ -99,9 +99,23 @@
                         <div class="col">
                             <div class="form-group">
                                 <label>
-                                    <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" name="privacy" required>
-                                    Acconsento l'<a href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> riguardo all'utilizzo dei dai personali.
+                                    <input type="checkbox" id="terms" [(ngModel)]="terms" name="terms" required>
+                                    Ho letto, compreso e accetto le <a href="/terms-and-conditions" target="_blank">Condizioni di utilizzo</a> dell'applicazione.
                                 </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="privacy-policy" [(ngModel)]="privacy" name="privacy" required>
+                                    Ho letto, compreso e accetto l’<a href="/privacy-policy" target="_blank">Informativa sulla Privacy</a> e presto il mio consenso all’utilizzo dei miei dati
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="showTickError">
+                        <div class="col">
+                            <div class="alert alert-danger">
+                                È necessario accettare le Condizioni di utilizzo e l'Informativa sulla Privacy per concludere l'onboarding!
                             </div>
                         </div>
                     </div>

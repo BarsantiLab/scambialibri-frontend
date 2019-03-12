@@ -1,7 +1,7 @@
 <div class="card">
     <!-- HEADER -->
     <div class="card-header bg-primary text-white">
-        <div class="container p-0">
+        <div class="container p-0 d-none d-sm-none d-md-none">
             <div class="row no-gutters">
                 <div class="col"><p class="lead m-0">{{data.book.author}}</p></div>
                 <div class="col"><p class="lead m-0">ISBN</p></div>
@@ -13,6 +13,20 @@
                 <div class="col-2"><h3 class="m-0 text-right">{{data.status | transactionStatus}}</h3></div>
             </div>
         </div>
+        <div class="container p-0 d-xl-none d-lg-none">
+            <div class="row no-gutters">
+                <div class="col"><p class="lead m-0">{{data.book.author}}</p></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col"><h3 class="m-0">{{data.book.title}}</h3></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col"><p class="lead m-0">Stato trans.</p></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col"><h3 class="m-0">{{data.status | transactionStatus}}</h3></div>
+            </div>
+        </div>
     </div>
 
     <!-- SALES LIST -->
@@ -20,12 +34,12 @@
         <table class="table table-striped table-vcenter m-0">
             <tbody>
                 <tr *ngFor="let sale of data.sales">
-                    <td style="width: 20%">{{sale.seller.firstName}} {{sale.seller.lastName}}</td>
+                    <td style="width: 20%">{{sale.user.firstName}} {{sale.user.lastName}}</td>
                     <td style="width: 20%">{{sale.status | transactionStatus}}</td>
                     <td style="width: 20%">{{sale.bookStatus | bookStatus}}</td>
                     <td style="width: 20%">{{sale.additionalMaterial ? 'Materiale addizionale fornito' : 'Nessun materiale addizionale'}}</td>
                     <td class="text-right">
-                        <button class="btn btn-secondary btn-sm" [disabled]="sale.status !== 'free'" (click)="pairTransaction(data, sale)">Contatta</button>
+                        <button class="btn btn-secondary btn-sm" [disabled]="sale.status !== 'free'" (click)="createTransaction(data, sale)">Contatta</button>
                     </td>
                 </tr>
 
@@ -49,7 +63,7 @@
     </div>
 
     <!-- INFO BOX -->
-    <div class="card-body border-top-0" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+    <div class="card-body border-top-0" *ngIf="data.status === 'pending' || data.status === 'notResponding' || data.status === 'inCompletion' || data.status === 'completed'">
         <div class="container p-0">
             <div class="row mb-2">
                 <div class="col">
@@ -62,9 +76,9 @@
                     <a [href]="'mailto:' + data.pairedUser.mail">{{data.pairedUser.mail}}</a>
                 </div>
 
-                <div class="col">
+                <!-- <div class="col">
                     {{data.pairedUser.address}}, {{data.pairedUser.city}} ({{data.pairedUser.province}})
-                </div>
+                </div> -->
             </div>
 
             <div class="row mb-2">
@@ -77,18 +91,18 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="data.status !== 'completed'">
                 <div class="col text-right">
                     <button class="btn btn-secondary btn-sm" (click)="cancelTransaction()" [disabled]="data.status === 'inCompletion'">Annulla</button>
-                    <button class="btn btn-secondary btn-sm" (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled || data.status === 'notResponding'">Non risponde</button>
-                    <button class="btn btn-secondary btn-sm" (click)="completeTransaction()">Completato</button>
+                    <button class="btn btn-secondary btn-sm" (click)="reportNotResponding()" [disabled]="!data.notRespondingEnabled || data.status === 'notResponding' || data.status === 'inCompletion'">Non risponde</button>
+                    <button class="btn btn-secondary btn-sm" (click)="completeTransaction()" [disabled]="data.transaction.isFirstComplete">Completato</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- CHAT -->
-    <div class="card-body border-top-0 bg-chat" *ngIf="data.status === 'pending' || data.status === 'notResponding'">
+    <div class="card-body card-body-chat bg-chat" *ngIf="data.status === 'pending' || data.status === 'notResponding' || data.status === 'completed'">
         <div class="container p-0">
             <div class="row" *ngIf="data.messages.length === 0">
                 <p class="text-center m-0 w-100">
@@ -97,8 +111,13 @@
             </div>
 
             <div class="row" *ngFor="let message of data.messages; last as isLast" [ngClass]="{ 'justify-content-end': message.sent, 'mb-2': !isLast }">
-                <div class="col col-chat bg-white border rounded-chat p-3">
-                    {{message.content}}
+                <div class="col col-chat bg-white border rounded-chat p-3" [ngClass]="{ 'rounded-chat-sent': message.sent }">
+                    <div class="row col m-0 p-0">
+                        {{message.content}}
+                    </div>
+                    <div class="row col m-0 p-0 d-flex flex-row-reverse">
+                        <span class="font-weight-light text-black-50"><small>{{message.date | chatDate }}</small></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,8 +131,8 @@
         </div>
     </div>
 
-    <!-- COMPLETED MESSAGE -->
+    <!-- COMPLETED MESSAGE
     <div class="card-body border-top-0" *ngIf="data.status === 'completed'">
         <p class="text-center">La transazione è stata completata!</p>
-    </div>
+    </div> -->
 </div>

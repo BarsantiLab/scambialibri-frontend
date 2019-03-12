@@ -14,6 +14,7 @@ import { ForgotPasswordComponent } from 'app/components/pages/forgot-password/fo
 import { OnboardingComponent } from 'app/components/pages/onboarding/onboarding.component';
 import { PrivacyPolicyComponent } from 'app/components/pages/privacy-policy/privacy-policy.component';
 import { SignupComponent } from 'app/components/pages/signup/signup.component';
+import { TermsAndConditionsComponent } from 'app/components/pages/terms-and-conditions/terms-and-conditions.component';
 
 const routes: Routes = [{
     path: '',
@@ -28,6 +29,9 @@ const routes: Routes = [{
 }, {
     path: 'privacy-policy',
     component: PrivacyPolicyComponent
+}, {
+    path: 'terms-and-conditions',
+    component: TermsAndConditionsComponent
 }, {
     path: 'forgot-password',
     component: ForgotPasswordComponent
