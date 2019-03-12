@@ -1,7 +1,7 @@
 <div class="card">
     <!-- HEADER -->
     <div class="card-header bg-primary text-white">
-        <div class="container p-0">
+        <div class="container p-0 d-none d-sm-none d-md-none">
             <div class="row no-gutters">
                 <div class="col"><p class="lead m-0">{{data.book.author}}</p></div>
                 <div class="col"><p class="lead m-0">ISBN</p></div>
@@ -11,6 +11,20 @@
                 <div class="col"><h3 class="m-0">{{data.book.title}}</h3></div>
                 <div class="col"><h3 class="m-0">{{data.book.isbn}}</h3></div>
                 <div class="col-2"><h3 class="m-0 text-right">{{data.status | transactionStatus}}</h3></div>
+            </div>
+        </div>
+        <div class="container p-0 d-xl-none d-lg-none">
+            <div class="row no-gutters">
+                <div class="col"><p class="lead m-0">{{data.book.author}}</p></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col"><h3 class="m-0">{{data.book.title}}</h3></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col"><p class="lead m-0">Stato trans.</p></div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col"><h3 class="m-0">{{data.status | transactionStatus}}</h3></div>
             </div>
         </div>
     </div>
@@ -97,7 +111,7 @@
             </div>
 
             <div class="row" *ngFor="let message of data.messages; last as isLast" [ngClass]="{ 'justify-content-end': message.sent, 'mb-2': !isLast }">
-                <div class="col col-chat bg-white border rounded-chat p-3">
+                <div class="col col-chat bg-white border rounded-chat p-3" [ngClass]="{ 'rounded-chat-sent': message.sent }">
                     <div class="row col m-0 p-0">
                         {{message.content}}
                     </div>
