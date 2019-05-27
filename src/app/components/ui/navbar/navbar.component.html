@@ -24,21 +24,16 @@
                     <!-- TODO: add user avatar -->
                     <a class="nav-link pr-0 leading-none" data-toggle="dropdown">
                         <span class="ml-2 d-none d-lg-block">
+                            <i class="fe fe-chevron-down"></i>
+                        </span>
+                        <span class="ml-2 d-none d-lg-block">
                             <span class="text-default">{{user.firstName}} {{user.lastName}}</span>
                             <span class="text-muted d-block mt-1">{{user.mail}}</span>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <!-- <a href="#" class="dropdown-item">
-                            <i class="dropdown-icon fe fe-user"></i> Profilo
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="dropdown-icon fe fe-settings"></i> Account
-                        </a> -->
-                        <a class="dropdown-item">
-                            Funzionalità in fase di sviluppo,<br />
-                            per ogni modifica al profilo contattare<br />
-                            <a href="mailto:info@loscambialibri.it" target="_blank">info@loscambialibri.it</a>.
+                        <a href="/settings" class="dropdown-item">
+                            <i class="dropdown-icon fe fe-settings"></i> Impostazioni profilo
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="/privacy-policy" class="dropdown-item" target="_blank">
@@ -88,6 +83,12 @@
                                 <a routerLink="/books/purchases-report" routerLinkActive="selected" class="dropdown-item">Resoconto acquisti</a>
                                 <a routerLink="/books/sales-report" routerLinkActive="selected" class="dropdown-item">Resoconto vendite</a>
                             </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a routerLink="/settings" class="nav-link">
+                            <i class="fe fe-settings"></i> Impostazioni profilo
                         </a>
                     </li>
 

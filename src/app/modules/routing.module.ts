@@ -13,6 +13,7 @@ import { ToSellComponent } from 'app/components/pages/books/to-sell/to-sell.comp
 import { ForgotPasswordComponent } from 'app/components/pages/forgot-password/forgot-password.component';
 import { OnboardingComponent } from 'app/components/pages/onboarding/onboarding.component';
 import { PrivacyPolicyComponent } from 'app/components/pages/privacy-policy/privacy-policy.component';
+import { SettingsComponent } from 'app/components/pages/settings/settings.component';
 import { SignupComponent } from 'app/components/pages/signup/signup.component';
 import { TermsAndConditionsComponent } from 'app/components/pages/terms-and-conditions/terms-and-conditions.component';
 
@@ -38,6 +39,9 @@ const routes: Routes = [{
 }, {
     path: 'onboarding',
     component: OnboardingComponent
+}, {
+    path: 'settings',
+    component: SettingsComponent
 }, {
     path: 'books',
     component: BooksComponent,

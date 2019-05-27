@@ -1,0 +1,144 @@
+<div class="page">
+    <div class="page-main">
+        <navbar></navbar>
+        <confirmation-modal></confirmation-modal>
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title col-12 p-0">Impostazioni profilo</h1>
+                    <span class="text-muted">Modifica le impostazioni del tuo profilo e clicca "Salva" in basso a destra.</span>
+                </div>
+                <form #settingsform="ngForm">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h1 class="card-title">Account</h1>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Indirizzo e-mail</label>
+                                                <input class="form-control" [(ngModel)]="settingsModel.mail" type="text" required name="mail" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Scuola</label>
+                                                <!-- <select name="currentClass" class="custom-select"> -->
+                                                <select class="custom-select" [(ngModel)]="settingsModel.school" name="school" disabled>
+                                                    <option *ngFor="let school of schools" [ngValue]="school">{{school.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="form-group">
+                                                    <label for="" class="form-label">Specializzazione</label>
+                                                    <!-- <select name="currentClass" class="custom-select"> -->
+                                                    <select class="custom-select" [(ngModel)]="settingsModel.specialization" name="specialization" disabled>
+                                                        <option *ngFor="let spec of specs" [ngValue]="spec">{{spec.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Classe attuale</label>
+                                                <!-- <select name="currentClass" class="custom-select"> -->
+                                                <select class="custom-select" [(ngModel)]="settingsModel.currentGrade" name="currentGrade">
+                                                    <option *ngFor="let grade of grades" [ngValue]="grade">{{grade.year}}{{grade.section}} - {{grade.specialization.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label for="" class="form-label">Classe futura</label>
+                                                <!-- <select name="currentClass" class="custom-select"> -->
+                                                <select class="custom-select" [(ngModel)]="settingsModel.futureGrade" name="futureGrade">
+                                                    <option *ngFor="let grade of grades" [ngValue]="grade">{{grade.year}}{{grade.section}} - {{grade.specialization.name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group mb-0">
+                                                <label for="" class="form-label">Cambia password</label>
+                                                <input class="form-control" type="password" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group mb-0">
+                                                <label for="" class="form-label">Ripeti password</label>
+                                                <input class="form-control" type="password" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h1 class="card-title">Dati personali</h1>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group mb-0">
+                                                <label for="" class="form-label">Nome</label>
+                                                <input class="form-control" type="text" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12">
+                                            <div class="form-group mb-0">
+                                                <label for="" class="form-label">Cognome</label>
+                                                <input class="form-control" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                    <div class="card-footer text-right">
+                                        <button class="btn btn-secondary">Annulla</button>
+                                        <button class="btn btn-primary ml-1" (click)="submitProfile()">Salva</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- TODO: move footer to dedicated component -->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                <a href="mailto:info@barsantilab.it" target="_blank">Hai trovato qualche problema? Scrivici!</a>
+            </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                Copyright © 2018 <a href="http://loscambialibri.it" target="_blank">LoScambialibri.it</a>/<a href="http://www.barsantilab.it/" target="_blank">BarsantiLab</a> &bull; <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>

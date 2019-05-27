@@ -6,6 +6,8 @@ export interface IUser {
     firstName?: string;
     lastName?: string;
 
+    school?: string;
+    specialization?: string;
     currentGrade?: string;
     futureGrade?: string;
 

@@ -53,4 +53,10 @@ export class UserService {
         const response = await this._http.post(url, { token, password });
         return await response.json();
     }
+
+    async updateProfile(data: any) {
+        const url = `${this._config.API.url}/user`;
+        const response = await this._http.post(url, data);
+        return await response.json();
+    }
 }
