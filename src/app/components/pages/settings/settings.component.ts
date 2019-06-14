@@ -56,6 +56,21 @@ export class SettingsComponent implements OnInit {
         this.settingsModel.futureGrade = this.grades.find(e => e.id === this.user.futureGrade);
     }
 
+    async onSpecChange(e: any) {
+        if (!e) return;
+
+        this.settingsModel.specialization = e;
+
+        this.grades = await this._schoolService.getGrades(
+            this.settingsModel.school,
+            this.settingsModel.specialization,
+            ['specialization']
+        );
+
+        this.settingsModel.currentGrade = this.grades[0];
+        this.settingsModel.futureGrade = this.grades[0];
+    }
+
     async submitProfile() {
         // TODO: handle validation
 

@@ -40,7 +40,7 @@
                                                 <div class="form-group">
                                                     <label for="" class="form-label">Specializzazione</label>
                                                     <!-- <select name="currentClass" class="custom-select"> -->
-                                                    <select class="custom-select" [(ngModel)]="settingsModel.specialization" name="specialization" disabled>
+                                                    <select class="custom-select" [ngModel]="settingsModel.specialization" name="specialization" (ngModelChange)="onSpecChange($event)">
                                                         <option *ngFor="let spec of specs" [ngValue]="spec">{{spec.name}}</option>
                                                     </select>
                                                 </div>
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-lg-6 col-md-12">
                                             <div class="form-group mb-0">
                                                 <label for="" class="form-label">Cambia password</label>
@@ -81,7 +81,7 @@
                                                 <input class="form-control" type="password" disabled />
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
