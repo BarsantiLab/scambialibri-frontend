@@ -1,4 +1,4 @@
 export interface ISchool {
-    name: string;
+    name?: string;
     id: string;
 }

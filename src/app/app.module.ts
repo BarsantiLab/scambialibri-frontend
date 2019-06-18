@@ -51,6 +51,7 @@ import { ConfirmationModalComponent } from './components/ui/confirmation-modal/c
 import { PrivacyPolicyComponent } from './components/pages/privacy-policy/privacy-policy.component';
 import { TermsAndConditionsComponent } from './components/pages/terms-and-conditions/terms-and-conditions.component';
 import { ForgotPasswordModalComponent } from './components/ui/forgot-password-modal/forgot-password-modal.component';
+import { SettingsComponent } from './components/pages/settings/settings.component';
 
 @NgModule({
     declarations: [
@@ -85,6 +86,7 @@ import { ForgotPasswordModalComponent } from './components/ui/forgot-password-mo
 
         ForgotPasswordModalComponent,
         ForgotPasswordComponent,
+        SettingsComponent,
     ],
 
     imports: [

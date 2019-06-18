@@ -26,8 +26,8 @@ export class SchoolService {
         return await response.json() as ISpecialization[];
     }
 
-    async getGrades(school: ISchool, specialization: ISpecialization) {
-        const url = `${this._config.API.url}/school/${school.id}/specialization/${specialization.id}/grade`;
+    async getGrades(school: ISchool, specialization: ISpecialization, populate?: string[]) {
+        const url = `${this._config.API.url}/school/${school.id}/specialization/${specialization.id}/grade?` + (populate || []).map(e => `populate[]=${e}`).join('&');
         const response = await this._http.get(url);
         return await response.json() as IGrade[];
     }
